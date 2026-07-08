@@ -1,0 +1,41 @@
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-xl);
+  background-color: var(--app-accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.export-btn:hover:not(:disabled) {
+  background-color: var(--app-accent-hover);
+}
+
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.export-btn:focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: 2px;
+}
+
+.export-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.export-live {
+  font-size: 0.8125rem;
+  min-height: 1.25em;
+  color: var(--app-text-secondary);
+  text-align: center;
+}

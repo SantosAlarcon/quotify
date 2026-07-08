@@ -1,0 +1,263 @@
+/* ── Base card container ── */
+.card-content {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Classic ── */
+.layout-classic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  gap: 1.5rem;
+
+  .card-header {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: calc(100% - 5rem);
+  }
+
+  .card-logo {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    opacity: 0.5;
+    max-height: 4.5rem;
+    object-fit: contain;
+  }
+}
+
+/* ── Modern ── */
+.layout-modern {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  gap: 1.5rem;
+
+  .card-accent-bar {
+    position: absolute;
+    left: 1.5rem;
+    top: 2.5rem;
+    bottom: 2.5rem;
+    width: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .card-text-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1.5rem;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .card-logo {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    opacity: 0.5;
+    max-height: 3rem;
+    object-fit: contain;
+  }
+
+  .card-photo--sm {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* ── Bold Quote ── */
+.layout-bold-quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  gap: 1.5rem;
+
+  .card-dq {
+    position: absolute;
+    font-size: 25rem;
+    line-height: 1;
+    opacity: 0.12;
+    top: -2rem;
+    left: -0.5rem;
+    pointer-events: none;
+    user-select: none;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .card-header {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: calc(100% - 5rem);
+  }
+
+  .card-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-logo {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    opacity: 0.5;
+    max-height: 4.5rem;
+    object-fit: contain;
+  }
+}
+
+/* ── Minimal ── */
+.layout-minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1.5rem;
+
+  .card-minimal-att {
+    font-size: 1rem;
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ── Shared elements ── */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: calc(100% - 5rem);
+}
+
+.card-photo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.card-headline {
+  font-size: 0.875rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.card-identity {
+  text-align: left;
+}
+
+/* ── Card text ── */
+.card-text--center {
+  font-size: 2rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.card-text--left {
+  font-size: 2.25rem;
+  line-height: 1.5;
+  text-align: left;
+  width: 100%;
+}
+
+/* ── Markdown rendered content ── */
+.card-text {
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 0.85em;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    background-color: rgb(from currentColor r g b / 0.1);
+  }
+
+  p {
+    margin: 0.5em 0;
+  }
+
+  ul,
+  ol {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+
+    li {
+      margin: 0.25em 0;
+    }
+  }
+
+  blockquote {
+    margin: 0.5em 0;
+    padding-left: 1em;
+    border-left: 3px solid currentColor;
+    opacity: 0.85;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0.5em 0;
+    line-height: 1.3;
+  }
+}

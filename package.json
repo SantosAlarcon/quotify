@@ -1,0 +1,31 @@
+{
+  "name": "quotify",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "waku dev",
+    "build": "waku build",
+    "start": "waku start",
+    "typegen": "waku router typegen"
+  },
+  "dependencies": {
+    "hono": "^4.12.28",
+    "html-to-image": "^1.11.13",
+    "marked": "^18.0.5",
+    "react": "~19.2.7",
+    "react-dom": "~19.2.7",
+    "react-server-dom-webpack": "~19.2.7",
+    "takumi-js": "^2.0.1",
+    "waku": "1.0.0-beta.6",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "typescript": "^7.0.2"
+  }
+}

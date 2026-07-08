@@ -1,0 +1,6 @@
+body {
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  color: var(--app-text-primary);
+  background-color: var(--app-bg);
+}
