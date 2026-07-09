@@ -4,11 +4,11 @@
   --app-bg: light-dark(#f0f2f5, #121212);
   --app-surface: light-dark(#ffffff, #1e1e1e);
   --app-text-primary: light-dark(#1a1a2e, #e0e0e0);
-  --app-text-secondary: light-dark(#6b7280, #9ca3af);
-  --app-border: light-dark(#e5e7eb, #333);
-  --app-accent: #6366f1;
-  --app-accent-hover: #4f46e5;
-  --app-danger: #ef4444;
+  --app-text-secondary: light-dark(#4b5260, #bcc3cf);
+  --app-border: light-dark(#e5e7eb, #4a4a4a);
+	--app-accent: light-dark(#4f46e5, #818cf8);
+  --app-accent-hover: light-dark(#6366f1, #a5b4fc);
+  --app-danger: light-dark(#DC143C, #f87171);
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;

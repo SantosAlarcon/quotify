@@ -80,9 +80,11 @@ export function useFontLoader() {
 		return () => {
 			if (prevLinkRef.current) {
 				document.head.removeChild(prevLinkRef.current)
+				prevLinkRef.current = null
 			}
 			if (prevStyleRef.current) {
 				document.head.removeChild(prevStyleRef.current)
+				prevStyleRef.current = null
 			}
 		}
 	}, [fontFamily, customFont, setFontReady])

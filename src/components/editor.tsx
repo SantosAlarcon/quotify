@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef, useId, type ChangeEvent } from "react";
-import type { AspectRatio, LayoutPreset, TextAlign, BgType } from "../store/quote-store";
+import { useRef, useState, useId, type ChangeEvent } from "react";
+import type { AspectRatio, LayoutPreset, TextAlign, BgType, LogoPosition } from "../store/quote-store";
 import { useQuoteStore } from "../store/quote-store";
 import { FONT_OPTIONS } from "../lib/fonts";
 import { ImageUpload } from "./image-upload";
+
+const MAX_FONT_SIZE = 2 * 1024 * 1024;
 
 const LAYOUTS: { value: LayoutPreset; label: string }[] = [
 	{ value: "classic", label: "Classic" },
@@ -13,11 +15,11 @@ const LAYOUTS: { value: LayoutPreset; label: string }[] = [
 	{ value: "minimal", label: "Minimal" },
 ];
 
-const RATIOS: { value: AspectRatio; label: string }[] = [
-	{ value: "1:1", label: "Square" },
-	{ value: "4:5", label: "Portrait" },
-	{ value: "1.91:1", label: "OG" },
-	{ value: "9:16", label: "Story" },
+const RATIOS: { value: AspectRatio; label: string; dims: string }[] = [
+	{ value: "1:1", label: "Square", dims: "1080×1080" },
+	{ value: "4:5", label: "Portrait", dims: "1080×1350" },
+	{ value: "1.91:1", label: "OG", dims: "1200×630" },
+	{ value: "9:16", label: "Story", dims: "1080×1920" },
 ];
 
 const ALIGNMENTS: { value: TextAlign; label: string }[] = [
@@ -52,6 +54,8 @@ export function Editor() {
 		setHeadline,
 		setPhoto,
 		setLogo,
+		setLogoOpacity,
+		setLogoPosition,
 		setCardBgColor,
 		setCardTextColor,
 		setFontFamily,
@@ -67,6 +71,8 @@ export function Editor() {
 		headline,
 		photo,
 		logo,
+		logoOpacity,
+		logoPosition,
 		cardBgColor,
 		cardTextColor,
 		fontFamily,
@@ -86,9 +92,21 @@ export function Editor() {
 	const configRef = useRef<HTMLInputElement>(null);
 	const uploadId = useId();
 
+	const [toast, setToast] = useState<string | null>(null);
+
+	const showToast = (msg: string) => {
+		setToast(msg);
+		setTimeout(() => setToast(null), 2500);
+	};
+
 	const handleFontUpload = (e: ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
 		if (!file) return;
+
+		if (file.size > MAX_FONT_SIZE) {
+			showToast("Font file is too large (max 2 MB).");
+			return;
+		}
 
 		const name = file.name.replace(/\.[^/.]+$/, "");
 
@@ -96,6 +114,7 @@ export function Editor() {
 		reader.onload = () => {
 			setCustomFont({ name, dataUrl: reader.result as string });
 			setFontFamily(name);
+			showToast(`Font "${name}" loaded`);
 		};
 		reader.readAsDataURL(file);
 	};
@@ -112,6 +131,8 @@ export function Editor() {
 			headline,
 			photo,
 			logo,
+			logoOpacity,
+			logoPosition,
 			cardBgColor,
 			cardTextColor,
 			fontFamily,
@@ -133,6 +154,7 @@ export function Editor() {
 		a.click();
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
+		showToast("Config exported");
 	};
 
 	const handleImport = (e: ChangeEvent<HTMLInputElement>) => {
@@ -149,6 +171,8 @@ export function Editor() {
 				if (typeof data.headline === "string") setHeadline(data.headline);
 				if (typeof data.photo === "string" || data.photo === null) setPhoto(data.photo);
 				if (typeof data.logo === "string" || data.logo === null) setLogo(data.logo);
+				if (typeof data.logoOpacity === "number") setLogoOpacity(data.logoOpacity);
+				if (["left", "center", "right"].includes(data.logoPosition)) setLogoPosition(data.logoPosition);
 				if (typeof data.cardBgColor === "string") setCardBgColor(data.cardBgColor);
 				if (typeof data.cardTextColor === "string") setCardTextColor(data.cardTextColor);
 				if (typeof data.fontFamily === "string") setFontFamily(data.fontFamily);
@@ -160,12 +184,20 @@ export function Editor() {
 				if (typeof data.accentColor === "string") setAccentColor(data.accentColor);
 				if (["solid", "gradient"].includes(data.bgType)) setBgType(data.bgType);
 				if (typeof data.bgGradient === "string") setBgGradient(data.bgGradient);
+				showToast("Config imported successfully");
 			} catch {
-				// invalid JSON — ignore
+				showToast("Invalid config file");
 			}
 		};
 		reader.readAsText(file);
 		if (configRef.current) configRef.current.value = "";
+	};
+
+	const handleReset = () => {
+		if (window.confirm("Are you sure you want to reset all settings?")) {
+			reset();
+			showToast("Settings reset");
+		}
 	};
 
 	const categories = CATEGORY_ORDER.filter(c => FONT_OPTIONS.some(f => f.category === c));
@@ -214,7 +246,10 @@ export function Editor() {
 							<span
 								className={`ratio-btn__thumb ratio-btn__thumb--${r.value.replace(":", "-")}`}
 							/>
-							<span className="ratio-btn__label">{r.label}</span>
+							<span className="ratio-btn__label">
+								{r.label}
+								<small className="ratio-btn__dims">{r.dims}</small>
+							</span>
 						</button>
 					))}
 				</div>
@@ -224,7 +259,7 @@ export function Editor() {
 				<h2>Quote</h2>
 				<label>
 					<span>
-						Quote text <small>(Markdown supported)</small>
+						Quote text <small title="**bold**, *italic*, `code`, [links](url), lists, blockquotes">(Markdown supported)</small>
 					</span>
 					<textarea
 						value={text}
@@ -281,6 +316,37 @@ export function Editor() {
 			<section className="editor__section">
 				<h2>Branding</h2>
 				<ImageUpload label="Logo" currentImage={logo} onImageChange={setLogo} />
+				{logo && (
+					<>
+						<label>
+							<span>Logo opacity: {Math.round(logoOpacity * 100)}%</span>
+							<input
+								type="range"
+								min="0.1"
+								max="1"
+								step="0.05"
+								value={logoOpacity}
+								onChange={(e) => setLogoOpacity(Number(e.target.value))}
+							/>
+						</label>
+						<div>
+							<span className="editor__label">Logo position</span>
+							<div className="align-grid">
+								{(["left", "center", "right"] as LogoPosition[]).map((p) => (
+									<button
+										key={p}
+										type="button"
+										className={`align-btn${logoPosition === p ? " align-btn--active" : ""}`}
+										onClick={() => setLogoPosition(p)}
+										aria-pressed={logoPosition === p}
+									>
+										{p.charAt(0).toUpperCase() + p.slice(1)}
+									</button>
+								))}
+							</div>
+						</div>
+					</>
+				)}
 				<label>
 					<span>Accent color</span>
 					<input
@@ -353,7 +419,7 @@ export function Editor() {
 						{categories.map((cat) => (
 							<optgroup key={cat} label={CATEGORY_LABELS[cat] ?? cat}>
 								{FONT_OPTIONS.filter((f) => f.category === cat).map((f) => (
-									<option key={f.id} value={f.fontFamily}>
+									<option key={f.id} value={f.fontFamily} style={{ fontFamily: f.fontFamily }}>
 										{f.label}
 									</option>
 								))}
@@ -401,11 +467,11 @@ export function Editor() {
 				</div>
 			</section>
 
-			<section className="editor__section">
+			<section className="editor__section editor__section--reset">
 				<button
 					type="button"
 					className="reset-btn"
-					onClick={reset}
+					onClick={handleReset}
 				>
 					Reset all
 				</button>
@@ -417,18 +483,21 @@ export function Editor() {
 					<button
 						type="button"
 						className="config-btn"
+						aria-label="Export config"
 						onClick={handleExport}
 					>
 						Export config
 					</button>
 					<button
 						type="button"
+						aria-label="Import config"
 						className="config-btn config-btn--import"
 						onClick={() => configRef.current?.click()}
 					>
 						Import config
 					</button>
 					<input
+						aria-label="Import config file"
 						ref={configRef}
 						type="file"
 						accept=".json"
@@ -437,6 +506,12 @@ export function Editor() {
 					/>
 				</div>
 			</section>
+
+			{toast && (
+				<div className="editor-toast" role="status" aria-live="polite">
+					{toast}
+				</div>
+			)}
 		</form>
 	);
 }

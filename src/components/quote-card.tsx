@@ -1,4 +1,7 @@
+'use client'
+
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 import type { QuoteState, TextAlign } from '../store/quote-store'
 
 const RATIO_STYLE: Record<string, string> = {
@@ -15,6 +18,8 @@ export type CardProps = Pick<
   | 'headline'
   | 'photo'
   | 'logo'
+  | 'logoOpacity'
+  | 'logoPosition'
   | 'cardBgColor'
   | 'cardTextColor'
   | 'fontFamily'
@@ -33,12 +38,20 @@ const ALIGN_CLASS: Record<TextAlign, string> = {
   right: 'card-text--right',
 }
 
+function renderMarkdown(text: string): string {
+  const raw = marked.parse(text, { async: false }) as string
+  if (typeof window === 'undefined') return raw
+  return DOMPurify.sanitize(raw)
+}
+
 export function QuoteCardContent({
   text,
   name,
   headline,
   photo,
   logo,
+  logoOpacity = 0.5,
+  logoPosition = 'right',
   cardBgColor,
   cardTextColor,
   fontFamily,
@@ -50,8 +63,13 @@ export function QuoteCardContent({
   bgType = 'solid',
   bgGradient = '',
 }: CardProps) {
-  const layout = layoutPreset
   const alignClass = ALIGN_CLASS[textAlign]
+  const logoPosStyle: React.CSSProperties =
+    logoPosition === 'left'
+      ? { left: '1.25rem', right: 'auto' }
+      : logoPosition === 'center'
+        ? { left: '50%', right: 'auto', transform: 'translateX(-50%)' }
+        : { right: '1.25rem' }
   const bgStyle: React.CSSProperties =
     bgType === 'gradient' && bgGradient
       ? { backgroundImage: bgGradient }
@@ -59,7 +77,7 @@ export function QuoteCardContent({
 
   return (
     <div
-      className={`card-content layout-${layout}`}
+      className={`card-content layout-${layoutPreset}`}
       style={{
         aspectRatio: RATIO_STYLE[aspectRatio] ?? '1.91 / 1',
         color: cardTextColor,
@@ -67,7 +85,7 @@ export function QuoteCardContent({
         ...bgStyle,
       }}
     >
-      {layout === 'bold-quote' && (
+      {layoutPreset === 'bold-quote' && (
         <span
           className='card-dq'
           style={{ color: accentColor }}
@@ -77,7 +95,7 @@ export function QuoteCardContent({
         </span>
       )}
 
-      {layout !== 'minimal' && layout !== 'modern' && (
+      {layoutPreset !== 'minimal' && layoutPreset !== 'modern' && (
         <header className='card-header'>
           {photo && (
             <img
@@ -93,31 +111,41 @@ export function QuoteCardContent({
         </header>
       )}
 
-      {layout === 'modern' && (
+      {layoutPreset === 'modern' && (
         <div className='card-accent-bar' style={{ backgroundColor: accentColor }} />
       )}
 
-      {layout === 'modern' && (
+      {layoutPreset === 'modern' && (
         <div className='card-text-wrap'>
-          {text && (
+          {text ? (
             <div
               className={`card-text ${alignClass}`}
               style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
-              dangerouslySetInnerHTML={{ __html: marked.parse(text, { async: false }) }}
+              dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
             />
+          ) : (
+            <div className={`card-text card-text--empty ${alignClass}`}>
+              <p>Your quote will appear here</p>
+            </div>
           )}
         </div>
       )}
 
-      {layout !== 'modern' && text && (
-        <div
-          className={`card-text ${alignClass}`}
-          style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
-          dangerouslySetInnerHTML={{ __html: marked.parse(text, { async: false }) }}
-        />
+      {layoutPreset !== 'modern' && (
+        text ? (
+          <div
+            className={`card-text ${alignClass}`}
+            style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
+            dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
+          />
+        ) : (
+          <div className={`card-text card-text--empty ${alignClass}`}>
+            <p>Your quote will appear here</p>
+          </div>
+        )
       )}
 
-      {layout === 'modern' && (
+      {layoutPreset === 'modern' && (
         <footer className='card-footer'>
           {photo && <img src={photo} alt='' className='card-photo card-photo--sm' />}
           <div>
@@ -127,17 +155,18 @@ export function QuoteCardContent({
         </footer>
       )}
 
-      {layout === 'minimal' && name && (
+      {layoutPreset === 'minimal' && name && (
         <p className='card-minimal-att' style={{ color: accentColor }}>
           &mdash; {name}
         </p>
       )}
 
-      {layout !== 'minimal' && logo && (
+      {layoutPreset !== 'minimal' && logo && (
         <img
           src={logo}
           alt=''
           className='card-logo'
+          style={{ opacity: logoOpacity, ...logoPosStyle }}
         />
       )}
     </div>

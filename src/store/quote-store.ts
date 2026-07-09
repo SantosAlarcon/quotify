@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 export type LayoutPreset = "classic" | "modern" | "bold-quote" | "minimal";
 export type AspectRatio = "1:1" | "4:5" | "1.91:1" | "9:16";
 export type TextAlign = "left" | "center" | "right";
+export type LogoPosition = "left" | "center" | "right";
 export type BgType = "solid" | "gradient";
 
 export type QuoteState = {
@@ -11,6 +12,8 @@ export type QuoteState = {
 	headline: string;
 	photo: string | null;
 	logo: string | null;
+	logoOpacity: number;
+	logoPosition: LogoPosition;
 	cardBgColor: string;
 	cardTextColor: string;
 	fontFamily: string;
@@ -31,6 +34,8 @@ type QuoteActions = {
 	setHeadline: (headline: string) => void;
 	setPhoto: (photo: string | null) => void;
 	setLogo: (logo: string | null) => void;
+	setLogoOpacity: (opacity: number) => void;
+	setLogoPosition: (position: LogoPosition) => void;
 	setCardBgColor: (color: string) => void;
 	setCardTextColor: (color: string) => void;
 	setFontFamily: (font: string) => void;
@@ -52,6 +57,8 @@ const initialState: QuoteState = {
 	headline: "",
 	photo: null,
 	logo: null,
+	logoOpacity: 0.5,
+	logoPosition: "right",
 	cardBgColor: "#ffffff",
 	cardTextColor: "#1a1a2e",
 	fontFamily: "Georgia, serif",
@@ -59,7 +66,7 @@ const initialState: QuoteState = {
 	textAlign: "left",
 	text: "",
 	layoutPreset: "classic",
-	aspectRatio: "1.91:1",
+	aspectRatio: "1:1",
 	accentColor: "#6366f1",
 	bgType: "solid",
 	bgGradient: "",
@@ -75,6 +82,8 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
 			setHeadline: (headline) => set({ headline }),
 			setPhoto: (photo) => set({ photo }),
 			setLogo: (logo) => set({ logo }),
+			setLogoOpacity: (logoOpacity) => set({ logoOpacity }),
+			setLogoPosition: (logoPosition) => set({ logoPosition }),
 			setCardBgColor: (cardBgColor) => set({ cardBgColor }),
 			setCardTextColor: (cardTextColor) => set({ cardTextColor }),
 			setFontFamily: (fontFamily) => set({ fontFamily }),
@@ -93,7 +102,7 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
 		{
 			name: "quotify-store",
 			partialize: (state) => {
-				const { isFontReady, customFont, ...rest } = state;
+				const { isFontReady, photo, logo, ...rest } = state;
 				return rest;
 			},
 		},

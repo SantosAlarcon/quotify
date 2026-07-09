@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, type RefObject } from 'react'
+import { useState, useRef, useEffect, type RefObject } from 'react'
 import { toPng } from 'html-to-image'
 import { useQuoteStore } from '../store/quote-store'
 
@@ -14,6 +14,13 @@ export function ExportButton({ cardRef, disabled }: Props) {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const liveRef = useRef<HTMLDivElement>(null)
   const isFontReady = useQuoteStore(s => s.isFontReady)
+
+  useEffect(() => {
+    if (status === 'success') {
+      const id = setTimeout(() => setStatus('idle'), 3000)
+      return () => clearTimeout(id)
+    }
+  }, [status])
 
   const handleExport = async () => {
     const el = cardRef.current
