@@ -1,61 +1,101 @@
-import { create } from 'zustand'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export type LayoutPreset = 'classic' | 'modern' | 'bold-quote' | 'minimal'
-export type AspectRatio = '1:1' | '4:5' | '1.91:1' | '9:16'
+export type LayoutPreset = "classic" | "modern" | "bold-quote" | "minimal";
+export type AspectRatio = "1:1" | "4:5" | "1.91:1" | "9:16";
+export type TextAlign = "left" | "center" | "right";
+export type BgType = "solid" | "gradient";
 
 export type QuoteState = {
-  name: string
-  headline: string
-  photo: string | null
-  logo: string | null
-  cardBgColor: string
-  cardTextColor: string
-  fontFamily: string
-  text: string
-  layoutPreset: LayoutPreset
-  aspectRatio: AspectRatio
-  accentColor: string
-}
+	name: string;
+	headline: string;
+	photo: string | null;
+	logo: string | null;
+	cardBgColor: string;
+	cardTextColor: string;
+	fontFamily: string;
+	fontSize: number;
+	textAlign: TextAlign;
+	text: string;
+	layoutPreset: LayoutPreset;
+	aspectRatio: AspectRatio;
+	accentColor: string;
+	bgType: BgType;
+	bgGradient: string;
+	isFontReady: boolean;
+	customFont: { name: string; dataUrl: string } | null;
+};
 
 type QuoteActions = {
-  setName: (name: string) => void
-  setHeadline: (headline: string) => void
-  setPhoto: (photo: string | null) => void
-  setLogo: (logo: string | null) => void
-  setCardBgColor: (color: string) => void
-  setCardTextColor: (color: string) => void
-  setFontFamily: (font: string) => void
-  setText: (text: string) => void
-  setLayoutPreset: (preset: LayoutPreset) => void
-  setAspectRatio: (ratio: AspectRatio) => void
-  setAccentColor: (color: string) => void
-}
+	setName: (name: string) => void;
+	setHeadline: (headline: string) => void;
+	setPhoto: (photo: string | null) => void;
+	setLogo: (logo: string | null) => void;
+	setCardBgColor: (color: string) => void;
+	setCardTextColor: (color: string) => void;
+	setFontFamily: (font: string) => void;
+	setFontSize: (size: number) => void;
+	setTextAlign: (align: TextAlign) => void;
+	setText: (text: string) => void;
+	setLayoutPreset: (preset: LayoutPreset) => void;
+	setAspectRatio: (ratio: AspectRatio) => void;
+	setAccentColor: (color: string) => void;
+	setBgType: (type: BgType) => void;
+	setBgGradient: (gradient: string) => void;
+	setFontReady: (ready: boolean) => void;
+	setCustomFont: (font: { name: string; dataUrl: string } | null) => void;
+	reset: () => void;
+};
 
 const initialState: QuoteState = {
-  name: '',
-  headline: '',
-  photo: null,
-  logo: null,
-  cardBgColor: '#ffffff',
-  cardTextColor: '#1a1a2e',
-  fontFamily: 'Georgia, serif',
-  text: '',
-  layoutPreset: 'classic',
-  aspectRatio: '1.91:1',
-  accentColor: '#6366f1',
-}
+	name: "",
+	headline: "",
+	photo: null,
+	logo: null,
+	cardBgColor: "#ffffff",
+	cardTextColor: "#1a1a2e",
+	fontFamily: "Georgia, serif",
+	fontSize: 32,
+	textAlign: "left",
+	text: "",
+	layoutPreset: "classic",
+	aspectRatio: "1.91:1",
+	accentColor: "#6366f1",
+	bgType: "solid",
+	bgGradient: "",
+	isFontReady: true,
+	customFont: null,
+};
 
-export const useQuoteStore = create<QuoteState & QuoteActions>((set) => ({
-  ...initialState,
-  setName: (name) => set({ name }),
-  setHeadline: (headline) => set({ headline }),
-  setPhoto: (photo) => set({ photo }),
-  setLogo: (logo) => set({ logo }),
-  setCardBgColor: (cardBgColor) => set({ cardBgColor }),
-  setCardTextColor: (cardTextColor) => set({ cardTextColor }),
-  setFontFamily: (fontFamily) => set({ fontFamily }),
-  setText: (text) => set({ text }),
-  setLayoutPreset: (layoutPreset) => set({ layoutPreset }),
-  setAspectRatio: (aspectRatio) => set({ aspectRatio }),
-  setAccentColor: (accentColor) => set({ accentColor }),
-}))
+export const useQuoteStore = create<QuoteState & QuoteActions>()(
+	persist(
+		(set) => ({
+			...initialState,
+			setName: (name) => set({ name }),
+			setHeadline: (headline) => set({ headline }),
+			setPhoto: (photo) => set({ photo }),
+			setLogo: (logo) => set({ logo }),
+			setCardBgColor: (cardBgColor) => set({ cardBgColor }),
+			setCardTextColor: (cardTextColor) => set({ cardTextColor }),
+			setFontFamily: (fontFamily) => set({ fontFamily }),
+			setFontSize: (fontSize) => set({ fontSize }),
+			setTextAlign: (textAlign) => set({ textAlign }),
+			setText: (text) => set({ text }),
+			setLayoutPreset: (layoutPreset) => set({ layoutPreset }),
+			setAspectRatio: (aspectRatio) => set({ aspectRatio }),
+			setAccentColor: (accentColor) => set({ accentColor }),
+			setBgType: (bgType) => set({ bgType }),
+			setBgGradient: (bgGradient) => set({ bgGradient }),
+			setFontReady: (isFontReady) => set({ isFontReady }),
+			setCustomFont: (customFont) => set({ customFont }),
+			reset: () => set({ ...initialState, isFontReady: true }),
+		}),
+		{
+			name: "quotify-store",
+			partialize: (state) => {
+				const { isFontReady, customFont, ...rest } = state;
+				return rest;
+			},
+		},
+	),
+);

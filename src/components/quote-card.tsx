@@ -1,5 +1,5 @@
 import { marked } from 'marked'
-import type { QuoteState } from '../store/quote-store'
+import type { QuoteState, TextAlign } from '../store/quote-store'
 
 const RATIO_STYLE: Record<string, string> = {
   '1:1': '1 / 1',
@@ -18,10 +18,20 @@ export type CardProps = Pick<
   | 'cardBgColor'
   | 'cardTextColor'
   | 'fontFamily'
+  | 'fontSize'
+  | 'textAlign'
   | 'layoutPreset'
   | 'aspectRatio'
   | 'accentColor'
+  | 'bgType'
+  | 'bgGradient'
 >
+
+const ALIGN_CLASS: Record<TextAlign, string> = {
+  left: 'card-text--left',
+  center: 'card-text--center',
+  right: 'card-text--right',
+}
 
 export function QuoteCardContent({
   text,
@@ -32,20 +42,29 @@ export function QuoteCardContent({
   cardBgColor,
   cardTextColor,
   fontFamily,
+  fontSize = 32,
+  textAlign = 'left',
   layoutPreset = 'classic',
   aspectRatio = '1.91:1',
   accentColor = '#6366f1',
+  bgType = 'solid',
+  bgGradient = '',
 }: CardProps) {
   const layout = layoutPreset
+  const alignClass = ALIGN_CLASS[textAlign]
+  const bgStyle: React.CSSProperties =
+    bgType === 'gradient' && bgGradient
+      ? { backgroundImage: bgGradient }
+      : { backgroundColor: cardBgColor }
 
   return (
     <div
       className={`card-content layout-${layout}`}
       style={{
         aspectRatio: RATIO_STYLE[aspectRatio] ?? '1.91 / 1',
-        backgroundColor: cardBgColor,
         color: cardTextColor,
         fontFamily,
+        ...bgStyle,
       }}
     >
       {layout === 'bold-quote' && (
@@ -82,8 +101,8 @@ export function QuoteCardContent({
         <div className='card-text-wrap'>
           {text && (
             <div
-              className='card-text card-text--left'
-              style={{ color: cardTextColor, fontFamily }}
+              className={`card-text ${alignClass}`}
+              style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
               dangerouslySetInnerHTML={{ __html: marked.parse(text, { async: false }) }}
             />
           )}
@@ -92,8 +111,8 @@ export function QuoteCardContent({
 
       {layout !== 'modern' && text && (
         <div
-          className='card-text card-text--left'
-          style={{ color: cardTextColor, fontFamily }}
+          className={`card-text ${alignClass}`}
+          style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
           dangerouslySetInnerHTML={{ __html: marked.parse(text, { async: false }) }}
         />
       )}

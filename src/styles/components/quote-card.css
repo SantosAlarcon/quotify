@@ -195,6 +195,13 @@
   width: 100%;
 }
 
+.card-text--right {
+  font-size: 2.25rem;
+  line-height: 1.5;
+  text-align: right;
+  width: 100%;
+}
+
 /* ── Markdown rendered content ── */
 .card-text {
   & > *:first-child {

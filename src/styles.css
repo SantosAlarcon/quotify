@@ -2,6 +2,7 @@
 
 @import './styles/reset.css' layer(reset);
 @import './styles/variables.css' layer(base);
+@import './styles/fonts.css' layer(base);
 @import './styles/typography.css' layer(base);
 @import './styles/layout.css' layer(layout);
 @import './styles/components/editor.css' layer(components);
