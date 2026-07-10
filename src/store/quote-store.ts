@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { TemplateConfig } from "../lib/templates";
 
-export type LayoutPreset = "classic" | "modern" | "bold-quote" | "minimal";
+export type LayoutPreset = "classic" | "modern" | "bold-quote" | "minimal" | "centered" | "split" | "gradient";
 export type AspectRatio = "1:1" | "4:5" | "1.91:1" | "9:16";
 export type TextAlign = "left" | "center" | "right";
 export type LogoPosition = "left" | "center" | "right";
@@ -49,6 +50,7 @@ type QuoteActions = {
 	setBgGradient: (gradient: string) => void;
 	setFontReady: (ready: boolean) => void;
 	setCustomFont: (font: { name: string; dataUrl: string } | null) => void;
+	loadTemplate: (config: TemplateConfig) => void;
 	reset: () => void;
 };
 
@@ -97,6 +99,14 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
 			setBgGradient: (bgGradient) => set({ bgGradient }),
 			setFontReady: (isFontReady) => set({ isFontReady }),
 			setCustomFont: (customFont) => set({ customFont }),
+			loadTemplate: (config) =>
+				set({
+					...config,
+					text: "",
+					name: "",
+					headline: "",
+					customFont: null,
+				}),
 			reset: () => set({ ...initialState, isFontReady: true }),
 		}),
 		{

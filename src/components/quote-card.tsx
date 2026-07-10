@@ -87,9 +87,10 @@ export function QuoteCardContent({
         ...bgStyle,
       }}
     >
-      {layoutPreset === 'bold-quote' && (
+      {/* ── Decorative quote marks ── */}
+      {(layoutPreset === 'bold-quote' || layoutPreset === 'gradient') && (
         <span
-          className='card-dq'
+          className={`card-dq${layoutPreset === 'gradient' ? ' card-dq--gradient' : ''}`}
           style={{ color: accentColor }}
           aria-hidden='true'
         >
@@ -97,15 +98,19 @@ export function QuoteCardContent({
         </span>
       )}
 
-      {layoutPreset !== 'minimal' && layoutPreset !== 'modern' && (
+      {/* ── Centered profile header ── */}
+      {layoutPreset === 'centered' && (
+        <div className='card-centered-header'>
+          {photo && <img src={photo} alt='' className='card-photo card-photo--xl' />}
+          {name && <h2 className='card-name'>{name}</h2>}
+          {headline && <p className='card-headline'>{headline}</p>}
+        </div>
+      )}
+
+      {/* ── Classic top-left header ── */}
+      {layoutPreset !== 'minimal' && layoutPreset !== 'modern' && layoutPreset !== 'centered' && layoutPreset !== 'split' && layoutPreset !== 'gradient' && (
         <header className='card-header'>
-          {photo && (
-            <img
-              src={photo}
-              alt=''
-              className='card-photo'
-            />
-          )}
+          {photo && <img src={photo} alt='' className='card-photo' />}
           <div className='card-identity'>
             {name && <h2 className='card-name'>{name}</h2>}
             {headline && <p className='card-headline'>{headline}</p>}
@@ -113,10 +118,12 @@ export function QuoteCardContent({
         </header>
       )}
 
+      {/* ── Modern accent bar ── */}
       {layoutPreset === 'modern' && (
         <div className='card-accent-bar' style={{ backgroundColor: accentColor }} />
       )}
 
+      {/* ── Modern text wrap ── */}
       {layoutPreset === 'modern' && (
         <div className='card-text-wrap'>
           {text ? (
@@ -133,7 +140,40 @@ export function QuoteCardContent({
         </div>
       )}
 
-      {layoutPreset !== 'modern' && (
+      {/* ── Split layout: left panel ── */}
+      {layoutPreset === 'split' && (
+        <div className='card-split-inner'>
+          <div className='card-split-left' style={{ backgroundColor: accentColor }}>
+            {photo && <img src={photo} alt='' className='card-photo card-photo--xl' />}
+            {name && <h3 className='card-name card-split-name'>{name}</h3>}
+            {headline && <p className='card-headline card-split-headline'>{headline}</p>}
+          </div>
+          <div className='card-split-right'>
+            {text ? (
+              <div
+                className={`card-text ${alignClass}`}
+                style={{ color: cardTextColor, fontFamily, fontSize: `${fontSize}px` }}
+                dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
+              />
+            ) : (
+              <div className={`card-text card-text--empty ${alignClass}`}>
+                <p>{t('quoteCard.empty')}</p>
+              </div>
+            )}
+            {logo && (
+              <img
+                src={logo}
+                alt=''
+                className='card-logo card-logo--split'
+                style={{ opacity: logoOpacity }}
+              />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Direct text (classic, bold-quote, centered, gradient, minimal) ── */}
+      {layoutPreset !== 'modern' && layoutPreset !== 'split' && (
         text ? (
           <div
             className={`card-text ${alignClass}`}
@@ -147,6 +187,7 @@ export function QuoteCardContent({
         )
       )}
 
+      {/* ── Modern footer ── */}
       {layoutPreset === 'modern' && (
         <footer className='card-footer'>
           {photo && <img src={photo} alt='' className='card-photo card-photo--sm' />}
@@ -157,13 +198,23 @@ export function QuoteCardContent({
         </footer>
       )}
 
+      {/* ── Minimal attribution ── */}
       {layoutPreset === 'minimal' && name && (
         <p className='card-minimal-att' style={{ color: accentColor }}>
           &mdash; {name}
         </p>
       )}
 
-      {layoutPreset !== 'minimal' && logo && (
+      {/* ── Gradient bottom bar ── */}
+      {layoutPreset === 'gradient' && (name || headline) && (
+        <div className='card-gradient-bar'>
+          {name && <span className='card-gradient-name'>{name}</span>}
+          {headline && <span className='card-gradient-headline'>{headline}</span>}
+        </div>
+      )}
+
+      {/* ── Logo (excluded from layouts that have their own) ── */}
+      {layoutPreset !== 'minimal' && layoutPreset !== 'split' && layoutPreset !== 'gradient' && logo && (
         <img
           src={logo}
           alt=''

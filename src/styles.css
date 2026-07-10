@@ -9,3 +9,5 @@
 @import './styles/components/quote-card.css' layer(components);
 @import './styles/components/export.css' layer(components);
 @import './styles/components/locale-selector.css' layer(components);
+@import './styles/components/theme-toggle.css' layer(components);
+@import './styles/components/template-gallery.css' layer(components);

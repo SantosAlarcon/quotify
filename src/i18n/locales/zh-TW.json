@@ -53,7 +53,15 @@
       "night": "夜晚",
       "peach": "蜜桃",
       "lavender": "薰衣草",
-      "mojave": "莫哈韋"
+      "mojave": "莫哈韋",
+      "aurora": "極光",
+      "crimson": "緋紅",
+      "mint": "薄荷",
+      "golden": "金色",
+      "sky": "天空",
+      "rose": "玫瑰",
+      "emerald": "翡翠",
+      "twilight": "暮光"
     },
     "fontCategories": {
       "serif": "襯線體",

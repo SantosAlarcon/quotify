@@ -2,6 +2,7 @@
 
 import { useTranslations } from '../i18n/use-translations'
 import { LocaleSelector } from './locale-selector'
+import { ThemeToggle } from './theme-toggle'
 
 export const Header = () => {
   const { t } = useTranslations()
@@ -11,7 +12,10 @@ export const Header = () => {
       <svg aria-label={t('header.logoAriaLabel')}>
         <use href="images/logo2.svg#logo" />
       </svg>
-      <LocaleSelector />
+      <div className="app__header-controls">
+        <ThemeToggle />
+        <LocaleSelector />
+      </div>
     </header>
   )
 }

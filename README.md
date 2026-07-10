@@ -12,17 +12,19 @@ This README is also available in [spanish](https://github.com/SantosAlarcon/quot
 ## Features
 | Feature | Description |
 |---|---|
-| **4 layouts** | Classic, Modern, Bold Quote, Minimal |
+| **7 layouts** | Classic, Modern, Bold Quote, Minimal, Centered, Split, Gradient |
 | **4 aspect ratios** | Square (1:1), Portrait (4:5), OG (1.91:1), Story (9:16) |
 | **Typography** | 15 fonts (Google Fonts + system) + upload your own `.woff2/.ttf/.otf` |
-| **Colors** | Accent color, background (solid or gradient), text color |
+| **Colors** | Accent color, background (solid or **16 gradients**), text color |
 | **Markdown** | **bold**, *italic*, `code`, [links](url), lists, blockquotes |
 | **Images** | Upload profile photo and logo (with opacity and position controls) |
-| **Export** | PNG at full resolution |
+| **Export** | PNG **and SVG** at full resolution |
+| **13 templates** | One-click preset styles to jumpstart your design |
+| **Dark mode** | Auto (system) + manual toggle: Light / Dark / System |
 | **Languages** | 11 locales — EN, ES, CA, FR, PT, DE, JA, IT, KO, ZH-CN, ZH-TW |
-| **Theme** | Auto light/dark via `light-dark()` |
 | **Persistence** | Everything auto-saves to localStorage |
 | **Import / Export** | Save and load your config as JSON |
+| **PWA** | Installable, works offline with service worker |
 | **Accessibility** | Keyboard navigation, `aria-pressed`, `aria-live`, contrast |
 | **Responsive** | Desktop (two panels) and mobile (vertical flow) |
 
@@ -37,7 +39,7 @@ This README is also available in [spanish](https://github.com/SantosAlarcon/quot
 | State | Zustand with `persist` |
 | CSS | Modern CSS — `light-dark()`, CSS Nesting, implicit layers, `svh` |
 | Typography | Google Fonts via CSS + dynamic `@font-face` for local fonts |
-| Export | `html-to-image` → PNG |
+| Export | `html-to-image` → PNG / SVG |
 | Markdown | `marked` + `dompurify` |
 | i18n | **Zero dependencies** — flat JSON + Zustand + browser detection |
 | TypeScript | Strict mode, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes` |
@@ -114,10 +116,11 @@ Interpolation supported via `{n}`, `{name}`, `{fontName}`, `{label}` placeholder
 ## Roadmap
 
 - [ ] More layout presets
-- [ ] SVG export
+- [x] SVG export
+- [x] 13 built-in templates
+- [x] Forced dark mode toggle
+- [x] PWA for offline use
 - [ ] Community template gallery
-- [ ] Forced dark mode toggle
-- [ ] PWA for offline use
 
 ---
 

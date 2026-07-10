@@ -53,7 +53,15 @@
       "night": "夜",
       "peach": "ピーチ",
       "lavender": "ラベンダー",
-      "mojave": "モハベ"
+      "mojave": "モハベ",
+      "aurora": "オーロラ",
+      "crimson": "クリムゾン",
+      "mint": "ミント",
+      "golden": "ゴールデン",
+      "sky": "スカイ",
+      "rose": "ローズ",
+      "emerald": "エメラルド",
+      "twilight": "トワイライト"
     },
     "fontCategories": {
       "serif": "セリフ",

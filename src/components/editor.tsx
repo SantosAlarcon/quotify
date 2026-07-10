@@ -6,6 +6,7 @@ import { FONT_OPTIONS } from "../lib/fonts";
 import type { AspectRatio, BgType, LayoutPreset, LogoPosition, TextAlign } from "../store/quote-store";
 import { useQuoteStore } from "../store/quote-store";
 import { ImageUpload } from "./image-upload";
+import { TemplateGallery } from "./template-gallery";
 
 const MAX_FONT_SIZE = 2 * 1024 * 1024;
 
@@ -14,6 +15,9 @@ const LAYOUTS: { value: LayoutPreset; labelKey: string }[] = [
 	{ value: "modern", labelKey: "editor.layoutLabels.modern" },
 	{ value: "bold-quote", labelKey: "editor.layoutLabels.boldQuote" },
 	{ value: "minimal", labelKey: "editor.layoutLabels.minimal" },
+	{ value: "centered", labelKey: "editor.layoutLabels.centered" },
+	{ value: "split", labelKey: "editor.layoutLabels.split" },
+	{ value: "gradient", labelKey: "editor.layoutLabels.gradient" },
 ];
 
 const RATIOS: { value: AspectRatio; labelKey: string; dims: string }[] = [
@@ -38,6 +42,14 @@ const GRADIENT_PRESETS: { labelKey: string; value: string }[] = [
 	{ labelKey: "editor.gradientLabels.peach", value: "linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)" },
 	{ labelKey: "editor.gradientLabels.lavender", value: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
 	{ labelKey: "editor.gradientLabels.mojave", value: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)" },
+	{ labelKey: "editor.gradientLabels.aurora", value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+	{ labelKey: "editor.gradientLabels.crimson", value: "linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%)" },
+	{ labelKey: "editor.gradientLabels.mint", value: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" },
+	{ labelKey: "editor.gradientLabels.golden", value: "linear-gradient(135deg, #f5af19 0%, #f12711 100%)" },
+	{ labelKey: "editor.gradientLabels.sky", value: "linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%)" },
+	{ labelKey: "editor.gradientLabels.rose", value: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)" },
+	{ labelKey: "editor.gradientLabels.emerald", value: "linear-gradient(135deg, #059669 0%, #34d399 100%)" },
+	{ labelKey: "editor.gradientLabels.twilight", value: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)" },
 ];
 
 const CATEGORY_KEYS: Record<string, string> = {
@@ -208,6 +220,11 @@ export function Editor() {
 		<>
 			<h1 className="editor-panel__title">{t("home.title")}</h1>
 			<form className="editor" onSubmit={(e) => e.preventDefault()}>
+				<section className="editor__section">
+					<h2>{t("editor.sections.templates")}</h2>
+					<TemplateGallery />
+				</section>
+
 				<section className="editor__section">
 					<h2>{t("editor.sections.layout")}</h2>
 					<div className="preset-grid">

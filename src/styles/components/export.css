@@ -26,6 +26,11 @@
 	}
 }
 
+.export-buttons {
+	display: flex;
+	gap: var(--space-sm);
+}
+
 .export-wrapper {
 	display: flex;
 	flex-direction: column;

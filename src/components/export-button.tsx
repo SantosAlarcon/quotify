@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, type RefObject } from 'react'
-import { toPng } from 'html-to-image'
+import { toPng, toSvg } from 'html-to-image'
 import { useQuoteStore } from '../store/quote-store'
 import { useTranslations } from '../i18n/use-translations'
 
@@ -10,8 +10,10 @@ type Props = {
   disabled?: boolean
 }
 
+type Format = 'png' | 'svg'
+
 export function ExportButton({ cardRef, disabled }: Props) {
-  const [exporting, setExporting] = useState(false)
+  const [exporting, setExporting] = useState<Format | null>(null)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const liveRef = useRef<HTMLDivElement>(null)
   const isFontReady = useQuoteStore(s => s.isFontReady)
@@ -24,7 +26,7 @@ export function ExportButton({ cardRef, disabled }: Props) {
     }
   }, [status])
 
-  const handleExport = async () => {
+  const handleExport = async (format: Format) => {
     const el = cardRef.current
     if (!el) return
 
@@ -34,39 +36,51 @@ export function ExportButton({ cardRef, disabled }: Props) {
       return
     }
 
-    setExporting(true)
+    setExporting(format)
     setStatus('idle')
     try {
-      const dataUrl = await toPng(el, {
+      const fn = format === 'png' ? toPng : toSvg
+      const dataUrl = await fn(el, {
         quality: 1,
-        pixelRatio: 2,
+        pixelRatio: format === 'png' ? 2 : 1,
         cacheBust: true,
       })
 
       const a = document.createElement('a')
       a.href = dataUrl
-      a.download = t('export.fileName')
+      a.download = format === 'png' ? t('export.fileName') : t('export.fileNameSvg')
       a.click()
       setStatus('success')
     } catch (err) {
       console.error('Export failed:', err)
       setStatus('error')
     } finally {
-      setExporting(false)
+      setExporting(null)
     }
   }
 
   return (
     <div className="export-wrapper">
-      <button
-        className="export-btn"
-        onClick={handleExport}
-        disabled={exporting || disabled}
-        aria-busy={exporting}
-        aria-label={t('export.button')}
-      >
-        {exporting ? t('export.generating') : t('export.button')}
-      </button>
+      <div className="export-buttons">
+        <button
+          className="export-btn"
+          onClick={() => handleExport('png')}
+          disabled={exporting !== null || disabled}
+          aria-busy={exporting === 'png'}
+          aria-label={t('export.button')}
+        >
+          {exporting === 'png' ? t('export.generating') : t('export.button')}
+        </button>
+        <button
+          className="export-btn"
+          onClick={() => handleExport('svg')}
+          disabled={exporting !== null || disabled}
+          aria-busy={exporting === 'svg'}
+          aria-label={t('export.buttonSvg')}
+        >
+          {exporting === 'svg' ? t('export.generating') : t('export.buttonSvg')}
+        </button>
+      </div>
       <div
         ref={liveRef}
         className="export-live"

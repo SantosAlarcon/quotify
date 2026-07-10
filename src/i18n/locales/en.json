@@ -7,6 +7,12 @@
 	"header": {
 		"logoAriaLabel": "Quotify"
 	},
+	"theme": {
+		"label": "Theme",
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System"
+	},
 	"home": {
 		"title": "Create Your Quote"
 	},
@@ -21,13 +27,47 @@
 			"profile": "Profile",
 			"branding": "Branding",
 			"typography": "Typography",
-			"importExport": "Import / Export"
+			"templates": "Templates",
+		"importExport": "Import / Export"
+		},
+		"templateNames": {
+			"elegant": "Elegant",
+			"sunsetVibes": "Sunset Vibes",
+			"oceanBreeze": "Ocean Breeze",
+			"midnight": "Midnight",
+			"earthy": "Earthy",
+			"playful": "Playful",
+			"luxury": "Luxury",
+			"pastelDream": "Pastel Dream",
+			"neonPulse": "Neon Pulse",
+			"vintagePaper": "Vintage Paper",
+			"forestMist": "Forest Mist",
+			"cleanWhite": "Clean White",
+			"royal": "Royal"
+		},
+		"templateDescriptions": {
+			"elegant": "Classic serif elegance with gold accents",
+			"sunsetVibes": "Bold quote with warm sunset gradient",
+			"oceanBreeze": "Clean modern with blue gradient",
+			"midnight": "Minimal dark with indigo accent",
+			"earthy": "Nature-inspired green tones",
+			"playful": "Pink and peachy fun",
+			"luxury": "Dark opulent serif design",
+			"pastelDream": "Soft purple portrait story",
+			"neonPulse": "Cyber dark with cyan glow",
+			"vintagePaper": "Warm vintage newspaper style",
+			"forestMist": "Dark green with fresh gradient",
+			"cleanWhite": "Minimal light and airy",
+			"royal": "Bold purple royal statement"
 		},
 		"layoutLabels": {
 			"classic": "Classic",
 			"modern": "Modern",
 			"boldQuote": "Bold Quote",
-			"minimal": "Minimal"
+			"minimal": "Minimal",
+			"centered": "Centered",
+			"split": "Split",
+			"gradient": "Gradient"
 		},
 		"aspectRatioLabels": {
 			"square": "Square",
@@ -54,7 +94,15 @@
 			"night": "Night",
 			"peach": "Peach",
 			"lavender": "Lavender",
-			"mojave": "Mojave"
+			"mojave": "Mojave",
+			"aurora": "Aurora",
+			"crimson": "Crimson",
+			"mint": "Mint",
+			"golden": "Golden",
+			"sky": "Sky",
+			"rose": "Rose",
+			"emerald": "Emerald",
+			"twilight": "Twilight"
 		},
 		"fontCategories": {
 			"serif": "Serif",
@@ -110,7 +158,9 @@
 		"downloaded": "Image downloaded",
 		"fontNotReady": "Font not loaded yet. Wait a moment.",
 		"failed": "Export failed. Try again.",
-		"fileName": "quote.png"
+		"fileName": "quote.png",
+		"buttonSvg": "Export as SVG",
+		"fileNameSvg": "quote.svg"
 	},
 	"imageUpload": {
 		"uploadLabel": "Upload {label}",

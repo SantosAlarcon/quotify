@@ -53,7 +53,15 @@
       "night": "Noite",
       "peach": "Pêssego",
       "lavender": "Lavanda",
-      "mojave": "Mojave"
+      "mojave": "Mojave",
+      "aurora": "Aurora",
+      "crimson": "Carmesim",
+      "mint": "Menta",
+      "golden": "Dourado",
+      "sky": "Céu",
+      "rose": "Rosa",
+      "emerald": "Esmeralda",
+      "twilight": "Crepúsculo"
     },
     "fontCategories": {
       "serif": "Serif",

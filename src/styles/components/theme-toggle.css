@@ -1,0 +1,26 @@
+.theme-toggle {
+	display: flex;
+	border: 1px solid var(--app-border);
+	border-radius: var(--radius-md);
+	overflow: hidden;
+}
+
+.theme-toggle__btn {
+	padding: var(--space-xs) var(--space-sm);
+	font-size: 0.875rem;
+	line-height: 1;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--app-text-secondary);
+	transition: background 0.15s, color 0.15s;
+
+	&:hover {
+		background: color-mix(in srgb, var(--app-accent) 10%, transparent);
+	}
+
+	&--active {
+		background: var(--app-accent);
+		color: #fff;
+	}
+}

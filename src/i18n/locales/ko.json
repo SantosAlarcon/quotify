@@ -53,7 +53,15 @@
       "night": "밤",
       "peach": "복숭아",
       "lavender": "라벤더",
-      "mojave": "모하비"
+      "mojave": "모하비",
+      "aurora": "오로라",
+      "crimson": "크림슨",
+      "mint": "민트",
+      "golden": "골든",
+      "sky": "스카이",
+      "rose": "로즈",
+      "emerald": "에메랄드",
+      "twilight": "트와일라잇"
     },
     "fontCategories": {
       "serif": "세리프",
