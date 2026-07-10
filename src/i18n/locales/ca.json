@@ -117,7 +117,9 @@
     "downloaded": "Imatge descarregada",
     "fontNotReady": "La font encara no s'ha carregat. Espera un moment.",
     "failed": "Error en exportar. Torna-ho a intentar.",
-    "fileName": "cita.png"
+    "fileName": "cita.png",
+    "buttonSvg": "Exportar com a SVG",
+    "fileNameSvg": "cita.svg"
   },
   "imageUpload": {
     "uploadLabel": "Pujar {label}",

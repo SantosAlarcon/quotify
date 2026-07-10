@@ -117,7 +117,9 @@
     "downloaded": "画像をダウンロードしました",
     "fontNotReady": "フォントがまだ読み込まれていません。しばらくお待ちください。",
     "failed": "エクスポートに失敗しました。もう一度お試しください。",
-    "fileName": "quote.png"
+    "fileName": "quote.png",
+    "buttonSvg": "SVGとしてエクスポート",
+    "fileNameSvg": "quote.svg"
   },
   "imageUpload": {
     "uploadLabel": "{label}をアップロード",

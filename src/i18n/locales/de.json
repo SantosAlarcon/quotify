@@ -117,7 +117,9 @@
     "downloaded": "Bild heruntergeladen",
     "fontNotReady": "Schriftart noch nicht geladen. Bitte warten.",
     "failed": "Export fehlgeschlagen. Versuche es erneut.",
-    "fileName": "zitat.png"
+    "fileName": "zitat.png",
+    "buttonSvg": "Als SVG exportieren",
+    "fileNameSvg": "zitat.svg"
   },
   "imageUpload": {
     "uploadLabel": "{label} hochladen",

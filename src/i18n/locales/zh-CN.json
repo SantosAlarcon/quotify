@@ -117,7 +117,9 @@
     "downloaded": "图片已下载",
     "fontNotReady": "字体尚未加载。请稍候。",
     "failed": "导出失败。请重试。",
-    "fileName": "quote.png"
+    "fileName": "quote.png",
+    "buttonSvg": "导出为 SVG",
+    "fileNameSvg": "quote.svg"
   },
   "imageUpload": {
     "uploadLabel": "上传{label}",

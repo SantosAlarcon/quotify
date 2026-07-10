@@ -117,7 +117,9 @@
     "downloaded": "Image téléchargée",
     "fontNotReady": "Police pas encore chargée. Patientez un instant.",
     "failed": "Échec de l'exportation. Réessayez.",
-    "fileName": "citation.png"
+    "fileName": "citation.png",
+    "buttonSvg": "Exporter en SVG",
+    "fileNameSvg": "citation.svg"
   },
   "imageUpload": {
     "uploadLabel": "Télécharger {label}",

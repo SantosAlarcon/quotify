@@ -117,7 +117,9 @@
     "downloaded": "Imagem baixada",
     "fontNotReady": "Fonte ainda não carregada. Aguarde um momento.",
     "failed": "Falha ao exportar. Tente novamente.",
-    "fileName": "citacao.png"
+    "fileName": "citacao.png",
+    "buttonSvg": "Exportar como SVG",
+    "fileNameSvg": "citacao.svg"
   },
   "imageUpload": {
     "uploadLabel": "Enviar {label}",

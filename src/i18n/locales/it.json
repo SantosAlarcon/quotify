@@ -117,7 +117,9 @@
     "downloaded": "Immagine scaricata",
     "fontNotReady": "Carattere non ancora caricato. Attendere un momento.",
     "failed": "Esportazione fallita. Riprova.",
-    "fileName": "citazione.png"
+    "fileName": "citazione.png",
+    "buttonSvg": "Esporta come SVG",
+    "fileNameSvg": "citazione.svg"
   },
   "imageUpload": {
     "uploadLabel": "Carica {label}",

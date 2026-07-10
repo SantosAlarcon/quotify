@@ -117,7 +117,9 @@
     "downloaded": "이미지 다운로드됨",
     "fontNotReady": "글꼴이 아직 로드되지 않았습니다. 잠시 기다려주세요.",
     "failed": "내보내기 실패. 다시 시도해주세요.",
-    "fileName": "quote.png"
+    "fileName": "quote.png",
+    "buttonSvg": "SVG로 내보내기",
+    "fileNameSvg": "quote.svg"
   },
   "imageUpload": {
     "uploadLabel": "{label} 업로드",
