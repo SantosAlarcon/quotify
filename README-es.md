@@ -4,6 +4,7 @@
 
 > ⚡ Hecho con [Waku](https://waku.gg) — React 19, Zustand, CSS moderno. Sin Tailwind, sin dependencias de i18n, sin tonterías.
 
+![](https://github.com/SantosAlarcon/quotify/blob/master/public/images/Screenshot.webp)
 ---
 
 ## Características

@@ -4,6 +4,7 @@
 
 > ⚡ Built with [Waku](https://waku.gg) — React 19, Zustand, modern CSS. No Tailwind, no i18n dependencies, no fluff.
 
+![](https://github.com/SantosAlarcon/quotify/blob/master/public/images/Screenshot.webp)
 ---
 
 This README is also available in [spanish](https://github.com/SantosAlarcon/quotify/blob/master/README-es.md) language.
