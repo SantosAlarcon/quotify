@@ -110,16 +110,6 @@ Interpolation supported via `{n}`, `{name}`, `{fontName}`, `{label}` placeholder
 
 ---
 
-## What I Learned
-
-- **Waku and RSC**: How server components coexist with client state. Zustand hooks only work in `'use client'`, while layout and pages can stay server-side.
-- **Modern CSS**: `light-dark()` eliminates the need for media queries in theme switching. CSS Nesting keeps styles clean and colocated.
-- **i18n without dependencies**: JSON + Zustand + a single hook is enough. You don't need i18next for 11 languages when the project scope is manageable.
-- **Double-scroll layout fix**: `body { display: flex; min-height: 100svh }` + child with `flex: 1; min-height: 0` = viewport-contained content with no page scroll.
-- **Font loading**: Google Fonts via dynamic `<link>`, local fonts via inline `@font-face` with `data-url`. The `isFontReady` state prevents exporting before fonts are loaded.
-
----
-
 ## Roadmap
 
 - [ ] More layout presets
