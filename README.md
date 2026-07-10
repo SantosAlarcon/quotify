@@ -1,43 +1,43 @@
 # Quotify
 
-**Crea imágenes impactantes para redes sociales en segundos.** Elige plantilla, personaliza cada detalle y exporta a PNG.
+**Create stunning social media quote images in seconds.** Pick a layout, customize every detail, export to PNG.
 
-> ⚡ Hecho con [Waku](https://waku.gg) — React 19, Zustand, CSS moderno. Sin Tailwind, sin dependencias de i18n, sin tonterías.
+> ⚡ Built with [Waku](https://waku.gg) — React 19, Zustand, modern CSS. No Tailwind, no i18n dependencies, no fluff.
 
 ---
 
-## Características
+## Features
 
 | | |
 |---|---|
-| **4 diseños** | Clásico, Moderno, Cita destacada, Minimalista |
-| **4 proporciones** | Cuadrado (1:1), Retrato (4:5), OG (1.91:1), Historia (9:16) |
-| **Tipografía** | 15 fuentes (Google Fonts + system) + sube tu propia `.woff2/.ttf/.otf` |
-| **Colores** | Color de acento, fondo (sólido o degradado), color de texto |
-| **Markdown** | **negrita**, *cursiva*, `código`, [enlaces](url), listas, blockquotes |
-| **Imágenes** | Sube foto de perfil y logotipo (con opacidad y posición) |
-| **Exportación** | PNG a resolución completa |
-| **Idiomas** | 11 idiomas — EN, ES, CA, FR, PT, DE, JA, IT, KO, ZH-CN, ZH-TW |
-| **Tema** | Claro / Oscuro automático (`light-dark()`) |
-| **Persistencia** | Todo se guarda automáticamente en localStorage |
-| **Import / Export** | Guarda y carga tu configuración en JSON |
-| **Accesibilidad** | Navegación por teclado, `aria-pressed`, `aria-live`, contraste |
-| **Responsive** | Escritorio (dos paneles) y móvil (flujo vertical) |
+| **4 layouts** | Classic, Modern, Bold Quote, Minimal |
+| **4 aspect ratios** | Square (1:1), Portrait (4:5), OG (1.91:1), Story (9:16) |
+| **Typography** | 15 fonts (Google Fonts + system) + upload your own `.woff2/.ttf/.otf` |
+| **Colors** | Accent color, background (solid or gradient), text color |
+| **Markdown** | **bold**, *italic*, `code`, [links](url), lists, blockquotes |
+| **Images** | Upload profile photo and logo (with opacity and position controls) |
+| **Export** | PNG at full resolution |
+| **Languages** | 11 locales — EN, ES, CA, FR, PT, DE, JA, IT, KO, ZH-CN, ZH-TW |
+| **Theme** | Auto light/dark via `light-dark()` |
+| **Persistence** | Everything auto-saves to localStorage |
+| **Import / Export** | Save and load your config as JSON |
+| **Accessibility** | Keyboard navigation, `aria-pressed`, `aria-live`, contrast |
+| **Responsive** | Desktop (two panels) and mobile (vertical flow) |
 
 ---
 
 ## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
 | Framework | [Waku](https://waku.gg) (RSC-based) + Vite |
 | UI | React 19 + React Compiler |
-| Estado | Zustand con `persist` |
-| CSS | CSS moderno — `light-dark()`, CSS Nesting, capas implícitas, `svh` |
-| Tipografía | Google Fonts via CSS + `@font-face` dinámico para fuentes locales |
-| Exportación | `html-to-image` → PNG |
+| State | Zustand with `persist` |
+| CSS | Modern CSS — `light-dark()`, CSS Nesting, implicit layers, `svh` |
+| Typography | Google Fonts via CSS + dynamic `@font-face` for local fonts |
+| Export | `html-to-image` → PNG |
 | Markdown | `marked` + `dompurify` |
-| i18n | **0 dependencias** — JSON plano + Zustand + detección del navegador |
+| i18n | **Zero dependencies** — flat JSON + Zustand + browser detection |
 | TypeScript | Strict mode, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes` |
 
 ---
@@ -45,90 +45,90 @@
 ## Getting Started
 
 ```bash
-git clone https://github.com/tuusuario/quotify
+git clone https://github.com/youruser/quotify
 cd quotify
 npm install
 npm run dev
 ```
 
-Abre `http://localhost:3000` y empieza a crear.
+Open `http://localhost:3000` and start creating.
 
-### Comandos
+### Commands
 
 ```bash
-npm run dev       # Desarrollo
-npm run build     # Build producción
-npm run start     # Servir build
+npm run dev       # Development
+npm run build     # Production build
+npm run start     # Serve build
 ```
 
 ---
 
-## Arquitectura
+## Architecture
 
 ```
 src/
-├── components/     # Componentes React (client components con 'use client')
+├── components/     # React components (client components with 'use client')
 ├── i18n/
-│   ├── locales/    # 11 archivos JSON de traducciones
-│   ├── types.ts    # Tipos e idiomas soportados
-│   └── use-translations.ts  # Hook useTranslations con fallback chain
+│   ├── locales/    # 11 JSON translation files
+│   ├── types.ts    # Types and supported locales
+│   └── use-translations.ts  # useTranslations hook with fallback chain
 ├── lib/
-│   ├── fonts.ts         # Catálogo de fuentes con metadata
-│   └── use-font-loader.ts  # Carga dinámica (Google Fonts + @font-face)
-├── middleware/     # Hono middleware (sin trailing slash)
+│   ├── fonts.ts         # Font catalog with metadata
+│   └── use-font-loader.ts  # Dynamic font loading (Google Fonts + @font-face)
+├── middleware/     # Hono middleware (no trailing slash)
 ├── pages/
-│   ├── _layout.tsx # Layout server component
-│   └── index.tsx   # Home page server component
+│   ├── _layout.tsx # Server layout component
+│   └── index.tsx   # Server home page
 ├── store/
-│   ├── quote-store.ts  # Estado del editor (persist)
-│   └── i18n-store.ts   # Estado del idioma (persist)
+│   ├── quote-store.ts  # Editor state (persist)
+│   └── i18n-store.ts   # Locale state (persist)
 └── styles/
     ├── reset.css
     ├── variables.css
     ├── layout.css
     ├── typography.css
     ├── fonts.css
-    └── components/   # Estilos por componente
+    └── components/   # Per-component styles
 ```
 
-Patrón clave: **server components** para layout/pages, **client components** para todo lo interactivo. El estado de Zustand se hidrata desde `localStorage` en el cliente.
+Key pattern: **server components** for layout/pages, **client components** for everything interactive. Zustand state hydrates from `localStorage` on the client.
 
 ---
 
 ## i18n
 
-Detección automática del idioma del navegador. Se puede cambiar manualmente desde el selector en el header. La preferencia persiste en `localStorage`.
+Automatic browser language detection. Switch manually from the header selector. Preference persists to `localStorage`.
 
-Las traducciones siguen una estructura plana con claves anidadas:
+Translations use a nested flat key structure:
 ```
 editor.labels.quoteText → "Quote text"
 editor.buttons.resetAll → "Reset all"
 ```
 
-Soporte de interpolación con marcadores `{n}`, `{name}`, `{fontName}`, `{label}`.
+Interpolation supported via `{n}`, `{name}`, `{fontName}`, `{label}` placeholders.
 
 ---
 
-## Lo que aprendí
+## What I Learned
 
-- **Waku y RSC**: Cómo conviven server components con estado de cliente. Los hooks de Zustand solo funcionan en `'use client'`, mientras que layout y páginas pueden ser server.
-- **CSS moderno**: `light-dark()` elimina la necesidad de media queries para el tema oscuro. CSS Nesting mantiene los estilos limpios y colocalizados.
-- **i18n sin dependencias**: JSON + Zustand + un hook es suficiente. No necesitas i18next para 11 idiomas si el proyecto es manejable.
-- **Layout sin doble scroll**: `body { display: flex; min-height: 100svh }` + hijo con `flex: 1; min-height: 0` = viewport contenido sin scroll de página.
-- **Carga de fuentes**: Google Fonts via `<link>` dinámico, fuentes locales via `@font-face` inline con `data-url`. El estado `isFontReady` evita exportar antes de tiempo.
+- **Waku and RSC**: How server components coexist with client state. Zustand hooks only work in `'use client'`, while layout and pages can stay server-side.
+- **Modern CSS**: `light-dark()` eliminates the need for media queries in theme switching. CSS Nesting keeps styles clean and colocated.
+- **i18n without dependencies**: JSON + Zustand + a single hook is enough. You don't need i18next for 11 languages when the project scope is manageable.
+- **Double-scroll layout fix**: `body { display: flex; min-height: 100svh }` + child with `flex: 1; min-height: 0` = viewport-contained content with no page scroll.
+- **Font loading**: Google Fonts via dynamic `<link>`, local fonts via inline `@font-face` with `data-url`. The `isFontReady` state prevents exporting before fonts are loaded.
 
 ---
 
 ## Roadmap
 
-- [ ] Más presets de diseño
-- [ ] Exportación a SVG
-- [ ] Galería de plantillas comunitarias
-- [ ] Modo oscuro forzado en el selector
-- [ ] PWA para usar offline
+- [ ] More layout presets
+- [ ] SVG export
+- [ ] Community template gallery
+- [ ] Forced dark mode toggle
+- [ ] PWA for offline use
 
 ---
 
-## Licencia
+## License
 
 MIT
