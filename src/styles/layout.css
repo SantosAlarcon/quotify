@@ -14,7 +14,7 @@
 
 	& svg {
 		color: light-dark(#101010, #eee);
-		transform: scale(0.75) translate(-3rem, -2rem);
+		transform: scale(0.75) translate(-3rem, 0rem);
 
 		@media (width < 768px) {
 			margin: 0 auto;
