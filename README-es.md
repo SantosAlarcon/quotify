@@ -109,16 +109,6 @@ Soporte de interpolación con marcadores `{n}`, `{name}`, `{fontName}`, `{label}
 
 ---
 
-## Lo que aprendí
-
-- **Waku y RSC**: Cómo conviven server components con estado de cliente. Los hooks de Zustand solo funcionan en `'use client'`, mientras que layout y páginas pueden ser server.
-- **CSS moderno**: `light-dark()` elimina la necesidad de media queries para el tema oscuro. CSS Nesting mantiene los estilos limpios y colocalizados.
-- **i18n sin dependencias**: JSON + Zustand + un hook es suficiente. No necesitas i18next para 11 idiomas si el proyecto es manejable.
-- **Layout sin doble scroll**: `body { display: flex; min-height: 100svh }` + hijo con `flex: 1; min-height: 0` = viewport contenido sin scroll de página.
-- **Carga de fuentes**: Google Fonts via `<link>` dinámico, fuentes locales via `@font-face` inline con `data-url`. El estado `isFontReady` evita exportar antes de tiempo.
-
----
-
 ## Roadmap
 
 - [ ] Más presets de diseño
