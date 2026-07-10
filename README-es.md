@@ -8,7 +8,7 @@
 
 ## Características
 
-| | |
+|Característica| Descripción |
 |---|---|
 | **4 diseños** | Clásico, Moderno, Cita destacada, Minimalista |
 | **4 proporciones** | Cuadrado (1:1), Retrato (4:5), OG (1.91:1), Historia (9:16) |
