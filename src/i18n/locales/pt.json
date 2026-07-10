@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — Gerador de imagens de citações",
+    "description": "Crie imagens de citações impressionantes para redes sociais. Personalize fontes, cores, layouts e exporte como PNG."
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "Crie sua citação"
+  },
+  "footer": {
+    "tagline": "Quotify — Crie imagens de citações lindas"
+  },
+  "editor": {
+    "sections": {
+      "layout": "Layout",
+      "aspectRatio": "Proporção",
+      "quote": "Citação",
+      "profile": "Perfil",
+      "branding": "Marca",
+      "typography": "Tipografia",
+      "importExport": "Importar / Exportar"
+    },
+    "layoutLabels": {
+      "classic": "Clássico",
+      "modern": "Moderno",
+      "boldQuote": "Citação em destaque",
+      "minimal": "Minimalista"
+    },
+    "aspectRatioLabels": {
+      "square": "Quadrado",
+      "portrait": "Retrato",
+      "og": "OG",
+      "story": "Story"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "Esquerda",
+      "center": "Centro",
+      "right": "Direita"
+    },
+    "gradientLabels": {
+      "none": "Nenhum",
+      "sunset": "Pôr do sol",
+      "ocean": "Oceano",
+      "forest": "Floresta",
+      "night": "Noite",
+      "peach": "Pêssego",
+      "lavender": "Lavanda",
+      "mojave": "Mojave"
+    },
+    "fontCategories": {
+      "serif": "Serif",
+      "sansSerif": "Sans Serif",
+      "monospace": "Monoespaçada",
+      "custom": "Personalizada"
+    },
+    "labels": {
+      "quoteText": "Texto da citação",
+      "markdownSupported": "(Markdown suportado)",
+      "quotePlaceholder": "Digite sua citação... **negrito**, *itálico*, [links](url)",
+      "textAlignment": "Alinhamento do texto",
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "headline": "Título",
+      "headlinePlaceholder": "Seu título ou slogan",
+      "photo": "Foto",
+      "logo": "Logotipo",
+      "logoOpacity": "Opacidade do logo: {n}%",
+      "logoPosition": "Posição do logo",
+      "accentColor": "Cor de destaque",
+      "backgroundColor": "Cor de fundo",
+      "backgroundType": "Tipo de fundo",
+      "textColor": "Cor do texto",
+      "solidColor": "Cor sólida",
+      "gradient": "Gradiente",
+      "gradientPreset": "Predefinição de gradiente",
+      "font": "Fonte",
+      "fontSize": "Tamanho da fonte: {n}px",
+      "uploadCustomFont": "+ Enviar fonte personalizada",
+      "removeCustomFont": "Remover {fontName}"
+    },
+    "buttons": {
+      "resetAll": "Redefinir tudo",
+      "exportConfig": "Exportar configuração",
+      "importConfig": "Importar configuração"
+    },
+    "toasts": {
+      "fontTooLarge": "O arquivo de fonte é muito grande (máx. 2 MB).",
+      "fontLoaded": "Fonte \"{name}\" carregada",
+      "configExported": "Configuração exportada",
+      "configImported": "Configuração importada com sucesso",
+      "invalidConfig": "Arquivo de configuração inválido",
+      "settingsReset": "Configurações redefinidas"
+    },
+    "dialogs": {
+      "resetConfirm": "Tem certeza de que deseja redefinir todas as configurações?"
+    }
+  },
+  "export": {
+    "button": "Exportar como PNG",
+    "generating": "Gerando...",
+    "downloaded": "Imagem baixada",
+    "fontNotReady": "Fonte ainda não carregada. Aguarde um momento.",
+    "failed": "Falha ao exportar. Tente novamente.",
+    "fileName": "citacao.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "Enviar {label}",
+    "uploadButton": "+ Enviar {label}",
+    "removeButton": "Remover {label}",
+    "altText": "{label} enviado",
+    "errorFormat": "Formato não suportado. Use JPG, PNG, WebP, SVG ou GIF.",
+    "errorSize": "Imagem muito grande (máx. 2 MB)."
+  },
+  "quoteCard": {
+    "empty": "Sua citação aparecerá aqui"
+  },
+  "quotePreview": {
+    "loadingFont": "Carregando fonte..."
+  }
+}

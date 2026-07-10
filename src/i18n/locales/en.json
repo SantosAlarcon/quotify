@@ -1,0 +1,129 @@
+{
+	"layout": {
+		    "title": "Quotify — Quote Image Generator",
+    "description": "Create stunning quote images for social media. Customize fonts, colors, layouts, and export as PNG.",
+		"description": "Quotify lets you create image quotes for sharing in social media"
+	},
+	"header": {
+		"logoAriaLabel": "Quotify"
+	},
+	"home": {
+		"title": "Create Your Quote"
+	},
+	"footer": {
+		"tagline": "Quotify — Create beautiful quote images"
+	},
+	"editor": {
+		"sections": {
+			"layout": "Layout",
+			"aspectRatio": "Aspect Ratio",
+			"quote": "Quote",
+			"profile": "Profile",
+			"branding": "Branding",
+			"typography": "Typography",
+			"importExport": "Import / Export"
+		},
+		"layoutLabels": {
+			"classic": "Classic",
+			"modern": "Modern",
+			"boldQuote": "Bold Quote",
+			"minimal": "Minimal"
+		},
+		"aspectRatioLabels": {
+			"square": "Square",
+			"portrait": "Portrait",
+			"og": "OG",
+			"story": "Story"
+		},
+		"aspectRatioDims": {
+			"square": "1080×1080",
+			"portrait": "1080×1350",
+			"og": "1200×630",
+			"story": "1080×1920"
+		},
+		"alignmentLabels": {
+			"left": "Left",
+			"center": "Center",
+			"right": "Right"
+		},
+		"gradientLabels": {
+			"none": "None",
+			"sunset": "Sunset",
+			"ocean": "Ocean",
+			"forest": "Forest",
+			"night": "Night",
+			"peach": "Peach",
+			"lavender": "Lavender",
+			"mojave": "Mojave"
+		},
+		"fontCategories": {
+			"serif": "Serif",
+			"sansSerif": "Sans Serif",
+			"monospace": "Monospace",
+			"custom": "Custom"
+		},
+		"labels": {
+			"quoteText": "Quote text",
+			"markdownSupported": "(Markdown supported)",
+			"quotePlaceholder": "Enter your quote... **bold**, *italic*, [links](url)",
+			"textAlignment": "Text alignment",
+			"name": "Name",
+			"namePlaceholder": "Your name",
+			"headline": "Headline",
+			"headlinePlaceholder": "Your title or tagline",
+			"photo": "Photo",
+			"logo": "Logo",
+			"logoOpacity": "Logo opacity: {n}%",
+			"logoPosition": "Logo position",
+			"accentColor": "Accent color",
+			"backgroundColor": "Background color",
+			"backgroundType": "Background type",
+			"textColor": "Text color",
+			"solidColor": "Solid color",
+			"gradient": "Gradient",
+			"gradientPreset": "Gradient preset",
+			"font": "Font",
+			"fontSize": "Font size: {n}px",
+			"uploadCustomFont": "+ Upload custom font",
+			"removeCustomFont": "Remove {fontName}"
+		},
+		"buttons": {
+			"resetAll": "Reset all",
+			"exportConfig": "Export config",
+			"importConfig": "Import config"
+		},
+		"toasts": {
+			"fontTooLarge": "Font file is too large (max 2 MB).",
+			"fontLoaded": "Font \"{name}\" loaded",
+			"configExported": "Config exported",
+			"configImported": "Config imported successfully",
+			"invalidConfig": "Invalid config file",
+			"settingsReset": "Settings reset"
+		},
+		"dialogs": {
+			"resetConfirm": "Are you sure you want to reset all settings?"
+		}
+	},
+	"export": {
+		"button": "Export as PNG",
+		"generating": "Generating...",
+		"downloaded": "Image downloaded",
+		"fontNotReady": "Font not loaded yet. Wait a moment.",
+		"failed": "Export failed. Try again.",
+		"fileName": "quote.png"
+	},
+	"imageUpload": {
+		"uploadLabel": "Upload {label}",
+		"uploadButton": "+ Upload {label}",
+		"removeButton": "Remove {label}",
+		"altText": "Uploaded {label}",
+		"errorFormat": "Unsupported format. Use JPG, PNG, WebP, SVG or GIF.",
+		"errorSize": "Image too large (max 2 MB)."
+	},
+	"quoteCard": {
+		"empty": "Your quote will appear here"
+	},
+	"quotePreview": {
+		"loadingFont": "Loading font..."
+	}
+}

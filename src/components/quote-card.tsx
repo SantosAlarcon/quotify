@@ -3,6 +3,7 @@
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 import type { QuoteState, TextAlign } from '../store/quote-store'
+import { useTranslations } from '../i18n/use-translations'
 
 const RATIO_STYLE: Record<string, string> = {
   '1:1': '1 / 1',
@@ -63,6 +64,7 @@ export function QuoteCardContent({
   bgType = 'solid',
   bgGradient = '',
 }: CardProps) {
+  const { t } = useTranslations()
   const alignClass = ALIGN_CLASS[textAlign]
   const logoPosStyle: React.CSSProperties =
     logoPosition === 'left'
@@ -125,7 +127,7 @@ export function QuoteCardContent({
             />
           ) : (
             <div className={`card-text card-text--empty ${alignClass}`}>
-              <p>Your quote will appear here</p>
+              <p>{t('quoteCard.empty')}</p>
             </div>
           )}
         </div>
@@ -140,7 +142,7 @@ export function QuoteCardContent({
           />
         ) : (
           <div className={`card-text card-text--empty ${alignClass}`}>
-            <p>Your quote will appear here</p>
+            <p>{t('quoteCard.empty')}</p>
           </div>
         )
       )}

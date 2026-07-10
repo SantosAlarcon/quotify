@@ -1,0 +1,129 @@
+{
+	"layout": {
+		    "title": "Quotify — Generador de imágenes de citas",
+    "description": "Crea imágenes de citas impresionantes para redes sociales. Personaliza fuentes, colores, diseños y exporta como PNG.",
+		"description": "Quotify te permite crear citas en imágenes para compartir en redes sociales"
+	},
+	"header": {
+		"logoAriaLabel": "Quotify"
+	},
+	"home": {
+		"title": "Crea tu cita"
+	},
+	"footer": {
+		"tagline": "Quotify — Crea imágenes preciosas de citas"
+	},
+	"editor": {
+		"sections": {
+			"layout": "Diseño",
+			"aspectRatio": "Relación de aspecto",
+			"quote": "Cita",
+			"profile": "Perfil",
+			"branding": "Marca",
+			"typography": "Tipografía",
+			"importExport": "Importar / Exportar"
+		},
+		"layoutLabels": {
+			"classic": "Clásico",
+			"modern": "Moderno",
+			"boldQuote": "Cita destacada",
+			"minimal": "Minimalista"
+		},
+		"aspectRatioLabels": {
+			"square": "Cuadrado",
+			"portrait": "Retrato",
+			"og": "OG",
+			"story": "Historia"
+		},
+		"aspectRatioDims": {
+			"square": "1080×1080",
+			"portrait": "1080×1350",
+			"og": "1200×630",
+			"story": "1080×1920"
+		},
+		"alignmentLabels": {
+			"left": "Izquierda",
+			"center": "Centro",
+			"right": "Derecha"
+		},
+		"gradientLabels": {
+			"none": "Ninguno",
+			"sunset": "Atardecer",
+			"ocean": "Océano",
+			"forest": "Bosque",
+			"night": "Noche",
+			"peach": "Melocotón",
+			"lavender": "Lavanda",
+			"mojave": "Mojave"
+		},
+		"fontCategories": {
+			"serif": "Serif",
+			"sansSerif": "Sans Serif",
+			"monospace": "Monoespaciada",
+			"custom": "Personalizada"
+		},
+		"labels": {
+			"quoteText": "Texto de la cita",
+			"markdownSupported": "(Markdown soportado)",
+			"quotePlaceholder": "Escribe tu cita... **negrita**, *cursiva*, [enlaces](url)",
+			"textAlignment": "Alineación del texto",
+			"name": "Nombre",
+			"namePlaceholder": "Tu nombre",
+			"headline": "Título",
+			"headlinePlaceholder": "Tu título o eslogan",
+			"photo": "Foto",
+			"logo": "Logotipo",
+			"logoOpacity": "Opacidad del logo: {n}%",
+			"logoPosition": "Posición del logo",
+			"accentColor": "Color de acento",
+			"backgroundColor": "Color de fondo",
+			"backgroundType": "Tipo de fondo",
+			"textColor": "Color del texto",
+			"solidColor": "Color sólido",
+			"gradient": "Degradado",
+			"gradientPreset": "Preajuste de degradado",
+			"font": "Fuente",
+			"fontSize": "Tamaño de fuente: {n}px",
+			"uploadCustomFont": "+ Subir fuente personalizada",
+			"removeCustomFont": "Eliminar {fontName}"
+		},
+		"buttons": {
+			"resetAll": "Restablecer todo",
+			"exportConfig": "Exportar configuración",
+			"importConfig": "Importar configuración"
+		},
+		"toasts": {
+			"fontTooLarge": "El archivo de fuente es demasiado grande (máx. 2 MB).",
+			"fontLoaded": "Fuente \"{name}\" cargada",
+			"configExported": "Configuración exportada",
+			"configImported": "Configuración importada correctamente",
+			"invalidConfig": "Archivo de configuración no válido",
+			"settingsReset": "Ajustes restablecidos"
+		},
+		"dialogs": {
+			"resetConfirm": "¿Seguro que quieres restablecer todos los ajustes?"
+		}
+	},
+	"export": {
+		"button": "Exportar como PNG",
+		"generating": "Generando...",
+		"downloaded": "Imagen descargada",
+		"fontNotReady": "La fuente aún no se ha cargado. Espera un momento.",
+		"failed": "Error al exportar. Inténtalo de nuevo.",
+		"fileName": "cita.png"
+	},
+	"imageUpload": {
+		"uploadLabel": "Subir {label}",
+		"uploadButton": "+ Subir {label}",
+		"removeButton": "Eliminar {label}",
+		"altText": "{label} subido",
+		"errorFormat": "Formato no compatible. Usa JPG, PNG, WebP, SVG o GIF.",
+		"errorSize": "Imagen demasiado grande (máx. 2 MB)."
+	},
+	"quoteCard": {
+		"empty": "Tu cita aparecerá aquí"
+	},
+	"quotePreview": {
+		"loadingFont": "Cargando fuente..."
+	}
+}

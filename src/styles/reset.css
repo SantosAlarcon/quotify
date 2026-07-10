@@ -13,10 +13,18 @@ html {
 }
 
 body {
-	/* min-height: 100svh; */
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+@media (width < 768px) {
+	body {
+		display: block;
+	}
 }
 
 img,

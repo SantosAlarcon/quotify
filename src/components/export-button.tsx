@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, type RefObject } from 'react'
 import { toPng } from 'html-to-image'
 import { useQuoteStore } from '../store/quote-store'
+import { useTranslations } from '../i18n/use-translations'
 
 type Props = {
   cardRef: RefObject<HTMLElement | null>
@@ -14,6 +15,7 @@ export function ExportButton({ cardRef, disabled }: Props) {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const liveRef = useRef<HTMLDivElement>(null)
   const isFontReady = useQuoteStore(s => s.isFontReady)
+  const { t } = useTranslations()
 
   useEffect(() => {
     if (status === 'success') {
@@ -43,7 +45,7 @@ export function ExportButton({ cardRef, disabled }: Props) {
 
       const a = document.createElement('a')
       a.href = dataUrl
-      a.download = 'quote.png'
+      a.download = t('export.fileName')
       a.click()
       setStatus('success')
     } catch (err) {
@@ -61,9 +63,9 @@ export function ExportButton({ cardRef, disabled }: Props) {
         onClick={handleExport}
         disabled={exporting || disabled}
         aria-busy={exporting}
-        aria-label='Export as PNG'
+        aria-label={t('export.button')}
       >
-        {exporting ? 'Generating...' : 'Export as PNG'}
+        {exporting ? t('export.generating') : t('export.button')}
       </button>
       <div
         ref={liveRef}
@@ -72,9 +74,9 @@ export function ExportButton({ cardRef, disabled }: Props) {
         aria-live="polite"
         aria-atomic="true"
       >
-        {status === 'success' && 'Image downloaded'}
-        {status === 'error' && !isFontReady && 'Font not loaded yet. Wait a moment.'}
-        {status === 'error' && isFontReady && 'Export failed. Try again.'}
+        {status === 'success' && t('export.downloaded')}
+        {status === 'error' && !isFontReady && t('export.fontNotReady')}
+        {status === 'error' && isFontReady && t('export.failed')}
       </div>
     </div>
   )

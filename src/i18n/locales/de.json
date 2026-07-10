@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — Zitat-Bild-Generator",
+    "description": "Erstelle beeindruckende Zitat-Bilder für soziale Medien. Passe Schriftarten, Farben, Layouts an und exportiere als PNG."
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "Erstelle dein Zitat"
+  },
+  "footer": {
+    "tagline": "Quotify — Erstelle schöne Zitat-Bilder"
+  },
+  "editor": {
+    "sections": {
+      "layout": "Layout",
+      "aspectRatio": "Seitenverhältnis",
+      "quote": "Zitat",
+      "profile": "Profil",
+      "branding": "Marke",
+      "typography": "Typografie",
+      "importExport": "Importieren / Exportieren"
+    },
+    "layoutLabels": {
+      "classic": "Klassisch",
+      "modern": "Modern",
+      "boldQuote": "Fettgedrucktes Zitat",
+      "minimal": "Minimalistisch"
+    },
+    "aspectRatioLabels": {
+      "square": "Quadrat",
+      "portrait": "Porträt",
+      "og": "OG",
+      "story": "Story"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "Links",
+      "center": "Mitte",
+      "right": "Rechts"
+    },
+    "gradientLabels": {
+      "none": "Kein",
+      "sunset": "Sonnenuntergang",
+      "ocean": "Ozean",
+      "forest": "Wald",
+      "night": "Nacht",
+      "peach": "Pfirsich",
+      "lavender": "Lavendel",
+      "mojave": "Mojave"
+    },
+    "fontCategories": {
+      "serif": "Serif",
+      "sansSerif": "Sans Serif",
+      "monospace": "Monospace",
+      "custom": "Benutzerdefiniert"
+    },
+    "labels": {
+      "quoteText": "Zitattext",
+      "markdownSupported": "(Markdown unterstützt)",
+      "quotePlaceholder": "Gib dein Zitat ein... **fett**, *kursiv*, [links](url)",
+      "textAlignment": "Textausrichtung",
+      "name": "Name",
+      "namePlaceholder": "Dein Name",
+      "headline": "Überschrift",
+      "headlinePlaceholder": "Dein Titel oder Slogan",
+      "photo": "Foto",
+      "logo": "Logo",
+      "logoOpacity": "Logo-Transparenz: {n}%",
+      "logoPosition": "Logo-Position",
+      "accentColor": "Akzentfarbe",
+      "backgroundColor": "Hintergrundfarbe",
+      "backgroundType": "Hintergrundtyp",
+      "textColor": "Textfarbe",
+      "solidColor": "Einfarbig",
+      "gradient": "Verlauf",
+      "gradientPreset": "Verlaufsvoreinstellung",
+      "font": "Schriftart",
+      "fontSize": "Schriftgröße: {n}px",
+      "uploadCustomFont": "+ Benutzerdefinierte Schriftart hochladen",
+      "removeCustomFont": "{fontName} entfernen"
+    },
+    "buttons": {
+      "resetAll": "Alles zurücksetzen",
+      "exportConfig": "Konfiguration exportieren",
+      "importConfig": "Konfiguration importieren"
+    },
+    "toasts": {
+      "fontTooLarge": "Die Schriftdatei ist zu groß (max. 2 MB).",
+      "fontLoaded": "Schriftart \"{name}\" geladen",
+      "configExported": "Konfiguration exportiert",
+      "configImported": "Konfiguration erfolgreich importiert",
+      "invalidConfig": "Ungültige Konfigurationsdatei",
+      "settingsReset": "Einstellungen zurückgesetzt"
+    },
+    "dialogs": {
+      "resetConfirm": "Bist du sicher, dass du alle Einstellungen zurücksetzen möchtest?"
+    }
+  },
+  "export": {
+    "button": "Als PNG exportieren",
+    "generating": "Generiere...",
+    "downloaded": "Bild heruntergeladen",
+    "fontNotReady": "Schriftart noch nicht geladen. Bitte warten.",
+    "failed": "Export fehlgeschlagen. Versuche es erneut.",
+    "fileName": "zitat.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "{label} hochladen",
+    "uploadButton": "+ {label} hochladen",
+    "removeButton": "{label} entfernen",
+    "altText": "{label} hochgeladen",
+    "errorFormat": "Nicht unterstütztes Format. Verwende JPG, PNG, WebP, SVG oder GIF.",
+    "errorSize": "Bild zu groß (max. 2 MB)."
+  },
+  "quoteCard": {
+    "empty": "Dein Zitat wird hier erscheinen"
+  },
+  "quotePreview": {
+    "loadingFont": "Schriftart wird geladen..."
+  }
+}

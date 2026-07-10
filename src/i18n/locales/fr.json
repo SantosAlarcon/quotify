@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — Générateur d'images de citations",
+    "description": "Créez de superbes images de citations pour les réseaux sociaux. Personnalisez polices, couleurs, mises en page et exportez en PNG."
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "Créez votre citation"
+  },
+  "footer": {
+    "tagline": "Quotify — Créez de magnifiques images de citations"
+  },
+  "editor": {
+    "sections": {
+      "layout": "Disposition",
+      "aspectRatio": "Rapport d'aspect",
+      "quote": "Citation",
+      "profile": "Profil",
+      "branding": "Marque",
+      "typography": "Typographie",
+      "importExport": "Importer / Exporter"
+    },
+    "layoutLabels": {
+      "classic": "Classique",
+      "modern": "Moderne",
+      "boldQuote": "Citation en gras",
+      "minimal": "Minimaliste"
+    },
+    "aspectRatioLabels": {
+      "square": "Carré",
+      "portrait": "Portrait",
+      "og": "OG",
+      "story": "Story"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "Gauche",
+      "center": "Centre",
+      "right": "Droite"
+    },
+    "gradientLabels": {
+      "none": "Aucun",
+      "sunset": "Coucher de soleil",
+      "ocean": "Océan",
+      "forest": "Forêt",
+      "night": "Nuit",
+      "peach": "Pêche",
+      "lavender": "Lavande",
+      "mojave": "Mojave"
+    },
+    "fontCategories": {
+      "serif": "Serif",
+      "sansSerif": "Sans Serif",
+      "monospace": "Monospace",
+      "custom": "Personnalisée"
+    },
+    "labels": {
+      "quoteText": "Texte de la citation",
+      "markdownSupported": "(Markdown supporté)",
+      "quotePlaceholder": "Entrez votre citation... **gras**, *italique*, [liens](url)",
+      "textAlignment": "Alignement du texte",
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "headline": "Titre",
+      "headlinePlaceholder": "Votre titre ou slogan",
+      "photo": "Photo",
+      "logo": "Logo",
+      "logoOpacity": "Opacité du logo : {n}%",
+      "logoPosition": "Position du logo",
+      "accentColor": "Couleur d'accent",
+      "backgroundColor": "Couleur de fond",
+      "backgroundType": "Type de fond",
+      "textColor": "Couleur du texte",
+      "solidColor": "Couleur unie",
+      "gradient": "Dégradé",
+      "gradientPreset": "Préréglage de dégradé",
+      "font": "Police",
+      "fontSize": "Taille de police : {n}px",
+      "uploadCustomFont": "+ Télécharger une police personnalisée",
+      "removeCustomFont": "Supprimer {fontName}"
+    },
+    "buttons": {
+      "resetAll": "Tout réinitialiser",
+      "exportConfig": "Exporter la config",
+      "importConfig": "Importer la config"
+    },
+    "toasts": {
+      "fontTooLarge": "Le fichier de police est trop volumineux (max 2 Mo).",
+      "fontLoaded": "Police \"{name}\" chargée",
+      "configExported": "Configuration exportée",
+      "configImported": "Configuration importée avec succès",
+      "invalidConfig": "Fichier de configuration invalide",
+      "settingsReset": "Paramètres réinitialisés"
+    },
+    "dialogs": {
+      "resetConfirm": "Êtes-vous sûr de vouloir réinitialiser tous les paramètres ?"
+    }
+  },
+  "export": {
+    "button": "Exporter en PNG",
+    "generating": "Génération...",
+    "downloaded": "Image téléchargée",
+    "fontNotReady": "Police pas encore chargée. Patientez un instant.",
+    "failed": "Échec de l'exportation. Réessayez.",
+    "fileName": "citation.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "Télécharger {label}",
+    "uploadButton": "+ Télécharger {label}",
+    "removeButton": "Supprimer {label}",
+    "altText": "{label} téléchargé",
+    "errorFormat": "Format non pris en charge. Utilisez JPG, PNG, WebP, SVG ou GIF.",
+    "errorSize": "Image trop volumineuse (max 2 Mo)."
+  },
+  "quoteCard": {
+    "empty": "Votre citation apparaîtra ici"
+  },
+  "quotePreview": {
+    "loadingFont": "Chargement de la police..."
+  }
+}

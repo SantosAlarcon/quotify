@@ -7,9 +7,11 @@
 	padding: var(--space-xs) var(--space-xl);
 	border-bottom: 1px solid var(--app-border);
 	background-color: var(--app-surface);
+	max-height: 6.5rem;
 
 	& svg {
 		color: light-dark(#101010, #eee);
+		transform: scale(0.75) translate(-3rem, -2rem);
 
 		@media (width < 768px) {
 			margin: 0 auto;
@@ -17,14 +19,9 @@
 	}
 }
 
-.app__header-title {
-	font-size: 1.25rem;
-	font-weight: 700;
-	letter-spacing: -0.02em;
-}
-
 .app__main {
 	flex: 1;
+	min-height: 0;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: var(--space-2xl);
@@ -44,6 +41,7 @@
 
 @media (width < 768px) {
 	.app__main {
+		flex: none;
 		grid-template-columns: 1fr;
 		gap: var(--space-lg);
 		padding: var(--space-lg);
@@ -63,7 +61,6 @@
 	border-radius: var(--radius-lg);
 	padding: var(--space-xl);
 	overflow-y: auto;
-	max-height: calc(100svh - 15rem);
 }
 
 .editor-panel__title {

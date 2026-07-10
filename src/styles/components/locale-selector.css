@@ -1,0 +1,28 @@
+.locale-selector {
+  position: absolute;
+  top: 50%;
+  right: var(--space-xl);
+  translate: 0 -50%;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-sm);
+  background: var(--app-surface);
+  color: var(--app-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  z-index: 10;
+  max-width: 8rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--app-accent);
+    outline-offset: 2px;
+  }
+}
+
+.app__header {
+  position: relative;
+
+  & svg {
+    display: block;
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — 名言画像ジェネレーター",
+    "description": "ソーシャルメディア用の美しい名言画像を作成。フォント、色、レイアウトをカスタマイズしてPNGにエクスポート。"
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "名言を作成"
+  },
+  "footer": {
+    "tagline": "Quotify — 美しい名言画像を作成"
+  },
+  "editor": {
+    "sections": {
+      "layout": "レイアウト",
+      "aspectRatio": "アスペクト比",
+      "quote": "名言",
+      "profile": "プロフィール",
+      "branding": "ブランディング",
+      "typography": "タイポグラフィ",
+      "importExport": "インポート / エクスポート"
+    },
+    "layoutLabels": {
+      "classic": "クラシック",
+      "modern": "モダン",
+      "boldQuote": "強調表示",
+      "minimal": "ミニマル"
+    },
+    "aspectRatioLabels": {
+      "square": "スクエア",
+      "portrait": "ポートレート",
+      "og": "OG",
+      "story": "ストーリー"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "左揃え",
+      "center": "中央揃え",
+      "right": "右揃え"
+    },
+    "gradientLabels": {
+      "none": "なし",
+      "sunset": "夕日",
+      "ocean": "海",
+      "forest": "森",
+      "night": "夜",
+      "peach": "ピーチ",
+      "lavender": "ラベンダー",
+      "mojave": "モハベ"
+    },
+    "fontCategories": {
+      "serif": "セリフ",
+      "sansSerif": "サンセリフ",
+      "monospace": "等幅",
+      "custom": "カスタム"
+    },
+    "labels": {
+      "quoteText": "名言テキスト",
+      "markdownSupported": "(Markdown対応)",
+      "quotePlaceholder": "名言を入力... **太字**, *斜体*, [リンク](url)",
+      "textAlignment": "テキスト配置",
+      "name": "名前",
+      "namePlaceholder": "あなたの名前",
+      "headline": "見出し",
+      "headlinePlaceholder": "肩書きやキャッチフレーズ",
+      "photo": "写真",
+      "logo": "ロゴ",
+      "logoOpacity": "ロゴの不透明度: {n}%",
+      "logoPosition": "ロゴの位置",
+      "accentColor": "アクセントカラー",
+      "backgroundColor": "背景色",
+      "backgroundType": "背景タイプ",
+      "textColor": "テキストの色",
+      "solidColor": "単色",
+      "gradient": "グラデーション",
+      "gradientPreset": "グラデーションプリセット",
+      "font": "フォント",
+      "fontSize": "フォントサイズ: {n}px",
+      "uploadCustomFont": "+ カスタムフォントをアップロード",
+      "removeCustomFont": "{fontName}を削除"
+    },
+    "buttons": {
+      "resetAll": "すべてリセット",
+      "exportConfig": "設定をエクスポート",
+      "importConfig": "設定をインポート"
+    },
+    "toasts": {
+      "fontTooLarge": "フォントファイルが大きすぎます（最大2MB）。",
+      "fontLoaded": "フォント「{name}」を読み込みました",
+      "configExported": "設定をエクスポートしました",
+      "configImported": "設定を正常にインポートしました",
+      "invalidConfig": "無効な設定ファイルです",
+      "settingsReset": "設定をリセットしました"
+    },
+    "dialogs": {
+      "resetConfirm": "すべての設定をリセットしてもよろしいですか？"
+    }
+  },
+  "export": {
+    "button": "PNGとしてエクスポート",
+    "generating": "生成中...",
+    "downloaded": "画像をダウンロードしました",
+    "fontNotReady": "フォントがまだ読み込まれていません。しばらくお待ちください。",
+    "failed": "エクスポートに失敗しました。もう一度お試しください。",
+    "fileName": "quote.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "{label}をアップロード",
+    "uploadButton": "+ {label}をアップロード",
+    "removeButton": "{label}を削除",
+    "altText": "{label}をアップロードしました",
+    "errorFormat": "サポートされていない形式です。JPG、PNG、WebP、SVG、GIFを使用してください。",
+    "errorSize": "画像が大きすぎます（最大2MB）。"
+  },
+  "quoteCard": {
+    "empty": "名言がここに表示されます"
+  },
+  "quotePreview": {
+    "loadingFont": "フォントを読み込み中..."
+  }
+}

@@ -8,3 +8,4 @@
 @import './styles/components/editor.css' layer(components);
 @import './styles/components/quote-card.css' layer(components);
 @import './styles/components/export.css' layer(components);
+@import './styles/components/locale-selector.css' layer(components);

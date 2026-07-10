@@ -5,7 +5,6 @@ export default async function HomePage() {
   return (
     <>
       <div className="editor-panel">
-        <h1 className="editor-panel__title">Create Your Quote</h1>
         <Editor />
       </div>
       <div className="preview-panel">

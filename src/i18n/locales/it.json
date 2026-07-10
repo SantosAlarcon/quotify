@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — Generatore di immagini di citazioni",
+    "description": "Crea splendide immagini di citazioni per i social media. Personalizza caratteri, colori, layout ed esporta come PNG."
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "Crea la tua citazione"
+  },
+  "footer": {
+    "tagline": "Quotify — Crea bellissime immagini di citazioni"
+  },
+  "editor": {
+    "sections": {
+      "layout": "Layout",
+      "aspectRatio": "Rapporto d'aspetto",
+      "quote": "Citazione",
+      "profile": "Profilo",
+      "branding": "Brand",
+      "typography": "Tipografia",
+      "importExport": "Importa / Esporta"
+    },
+    "layoutLabels": {
+      "classic": "Classico",
+      "modern": "Moderno",
+      "boldQuote": "Citazione in grassetto",
+      "minimal": "Minimale"
+    },
+    "aspectRatioLabels": {
+      "square": "Quadrato",
+      "portrait": "Ritratto",
+      "og": "OG",
+      "story": "Story"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "Sinistra",
+      "center": "Centro",
+      "right": "Destra"
+    },
+    "gradientLabels": {
+      "none": "Nessuno",
+      "sunset": "Tramonto",
+      "ocean": "Oceano",
+      "forest": "Foresta",
+      "night": "Notte",
+      "peach": "Pesca",
+      "lavender": "Lavanda",
+      "mojave": "Mojave"
+    },
+    "fontCategories": {
+      "serif": "Serif",
+      "sansSerif": "Sans Serif",
+      "monospace": "Monospace",
+      "custom": "Personalizzata"
+    },
+    "labels": {
+      "quoteText": "Testo della citazione",
+      "markdownSupported": "(Markdown supportato)",
+      "quotePlaceholder": "Inserisci la citazione... **grassetto**, *corsivo*, [link](url)",
+      "textAlignment": "Allineamento testo",
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "headline": "Titolo",
+      "headlinePlaceholder": "Il tuo titolo o slogan",
+      "photo": "Foto",
+      "logo": "Logo",
+      "logoOpacity": "Opacità logo: {n}%",
+      "logoPosition": "Posizione logo",
+      "accentColor": "Colore accentuazione",
+      "backgroundColor": "Colore sfondo",
+      "backgroundType": "Tipo di sfondo",
+      "textColor": "Colore testo",
+      "solidColor": "Colore pieno",
+      "gradient": "Sfumatura",
+      "gradientPreset": "Preimpostazione sfumatura",
+      "font": "Carattere",
+      "fontSize": "Dimensione carattere: {n}px",
+      "uploadCustomFont": "+ Carica carattere personalizzato",
+      "removeCustomFont": "Rimuovi {fontName}"
+    },
+    "buttons": {
+      "resetAll": "Resetta tutto",
+      "exportConfig": "Esporta configurazione",
+      "importConfig": "Importa configurazione"
+    },
+    "toasts": {
+      "fontTooLarge": "Il file del carattere è troppo grande (max 2 MB).",
+      "fontLoaded": "Carattere \"{name}\" caricato",
+      "configExported": "Configurazione esportata",
+      "configImported": "Configurazione importata con successo",
+      "invalidConfig": "File di configurazione non valido",
+      "settingsReset": "Impostazioni ripristinate"
+    },
+    "dialogs": {
+      "resetConfirm": "Sei sicuro di voler resettare tutte le impostazioni?"
+    }
+  },
+  "export": {
+    "button": "Esporta come PNG",
+    "generating": "Generazione...",
+    "downloaded": "Immagine scaricata",
+    "fontNotReady": "Carattere non ancora caricato. Attendere un momento.",
+    "failed": "Esportazione fallita. Riprova.",
+    "fileName": "citazione.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "Carica {label}",
+    "uploadButton": "+ Carica {label}",
+    "removeButton": "Rimuovi {label}",
+    "altText": "{label} caricato",
+    "errorFormat": "Formato non supportato. Usa JPG, PNG, WebP, SVG o GIF.",
+    "errorSize": "Immagine troppo grande (max 2 MB)."
+  },
+  "quoteCard": {
+    "empty": "La tua citazione apparirà qui"
+  },
+  "quotePreview": {
+    "loadingFont": "Caricamento carattere..."
+  }
+}

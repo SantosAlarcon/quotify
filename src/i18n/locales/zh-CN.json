@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — 名言图片生成器",
+    "description": "为社交媒体创建精美的名言图片。自定义字体、颜色、布局，并导出为PNG。"
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "创建你的名言"
+  },
+  "footer": {
+    "tagline": "Quotify — 创建精美的名言图片"
+  },
+  "editor": {
+    "sections": {
+      "layout": "布局",
+      "aspectRatio": "宽高比",
+      "quote": "名言",
+      "profile": "个人资料",
+      "branding": "品牌",
+      "typography": "排版",
+      "importExport": "导入 / 导出"
+    },
+    "layoutLabels": {
+      "classic": "经典",
+      "modern": "现代",
+      "boldQuote": "加粗引用",
+      "minimal": "简约"
+    },
+    "aspectRatioLabels": {
+      "square": "正方形",
+      "portrait": "竖版",
+      "og": "OG",
+      "story": "故事"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "左对齐",
+      "center": "居中",
+      "right": "右对齐"
+    },
+    "gradientLabels": {
+      "none": "无",
+      "sunset": "日落",
+      "ocean": "海洋",
+      "forest": "森林",
+      "night": "夜晚",
+      "peach": "蜜桃",
+      "lavender": "薰衣草",
+      "mojave": "莫哈韦"
+    },
+    "fontCategories": {
+      "serif": "衬线体",
+      "sansSerif": "无衬线体",
+      "monospace": "等宽字体",
+      "custom": "自定义"
+    },
+    "labels": {
+      "quoteText": "名言文本",
+      "markdownSupported": "(支持 Markdown)",
+      "quotePlaceholder": "输入你的名言... **加粗**, *斜体*, [链接](url)",
+      "textAlignment": "文本对齐",
+      "name": "姓名",
+      "namePlaceholder": "你的姓名",
+      "headline": "标题",
+      "headlinePlaceholder": "你的头衔或标语",
+      "photo": "照片",
+      "logo": "标志",
+      "logoOpacity": "标志透明度: {n}%",
+      "logoPosition": "标志位置",
+      "accentColor": "强调色",
+      "backgroundColor": "背景色",
+      "backgroundType": "背景类型",
+      "textColor": "文字颜色",
+      "solidColor": "纯色",
+      "gradient": "渐变",
+      "gradientPreset": "渐变预设",
+      "font": "字体",
+      "fontSize": "字体大小: {n}px",
+      "uploadCustomFont": "+ 上传自定义字体",
+      "removeCustomFont": "删除 {fontName}"
+    },
+    "buttons": {
+      "resetAll": "重置全部",
+      "exportConfig": "导出配置",
+      "importConfig": "导入配置"
+    },
+    "toasts": {
+      "fontTooLarge": "字体文件太大（最大 2 MB）。",
+      "fontLoaded": "字体“{name}”已加载",
+      "configExported": "配置已导出",
+      "configImported": "配置导入成功",
+      "invalidConfig": "无效的配置文件",
+      "settingsReset": "设置已重置"
+    },
+    "dialogs": {
+      "resetConfirm": "确定要重置所有设置吗？"
+    }
+  },
+  "export": {
+    "button": "导出为 PNG",
+    "generating": "生成中...",
+    "downloaded": "图片已下载",
+    "fontNotReady": "字体尚未加载。请稍候。",
+    "failed": "导出失败。请重试。",
+    "fileName": "quote.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "上传{label}",
+    "uploadButton": "+ 上传{label}",
+    "removeButton": "删除{label}",
+    "altText": "{label}已上传",
+    "errorFormat": "不支持的格式。请使用 JPG、PNG、WebP、SVG 或 GIF。",
+    "errorSize": "图片太大（最大 2 MB）。"
+  },
+  "quoteCard": {
+    "empty": "你的名言将显示在这里"
+  },
+  "quotePreview": {
+    "loadingFont": "正在加载字体..."
+  }
+}

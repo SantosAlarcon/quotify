@@ -1,0 +1,128 @@
+{
+  "layout": {
+    "title": "Quotify — 명언 이미지 생성기",
+    "description": "소셜 미디어용 멋진 명언 이미지를 만드세요. 글꼴, 색상, 레이아웃을 사용자 정의하고 PNG로 내보내세요."
+  },
+  "header": {
+    "logoAriaLabel": "Quotify"
+  },
+  "home": {
+    "title": "명언 만들기"
+  },
+  "footer": {
+    "tagline": "Quotify — 아름다운 명언 이미지 만들기"
+  },
+  "editor": {
+    "sections": {
+      "layout": "레이아웃",
+      "aspectRatio": "화면 비율",
+      "quote": "명언",
+      "profile": "프로필",
+      "branding": "브랜딩",
+      "typography": "타이포그래피",
+      "importExport": "가져오기 / 내보내기"
+    },
+    "layoutLabels": {
+      "classic": "클래식",
+      "modern": "모던",
+      "boldQuote": "볼드 명언",
+      "minimal": "미니멀"
+    },
+    "aspectRatioLabels": {
+      "square": "정사각형",
+      "portrait": "세로",
+      "og": "OG",
+      "story": "스토리"
+    },
+    "aspectRatioDims": {
+      "square": "1080×1080",
+      "portrait": "1080×1350",
+      "og": "1200×630",
+      "story": "1080×1920"
+    },
+    "alignmentLabels": {
+      "left": "왼쪽",
+      "center": "가운데",
+      "right": "오른쪽"
+    },
+    "gradientLabels": {
+      "none": "없음",
+      "sunset": "석양",
+      "ocean": "바다",
+      "forest": "숲",
+      "night": "밤",
+      "peach": "복숭아",
+      "lavender": "라벤더",
+      "mojave": "모하비"
+    },
+    "fontCategories": {
+      "serif": "세리프",
+      "sansSerif": "산세리프",
+      "monospace": "고정폭",
+      "custom": "사용자 정의"
+    },
+    "labels": {
+      "quoteText": "명언 텍스트",
+      "markdownSupported": "(Markdown 지원)",
+      "quotePlaceholder": "명언을 입력하세요... **굵게**, *기울임*, [링크](url)",
+      "textAlignment": "텍스트 정렬",
+      "name": "이름",
+      "namePlaceholder": "당신의 이름",
+      "headline": "헤드라인",
+      "headlinePlaceholder": "직함 또는 슬로건",
+      "photo": "사진",
+      "logo": "로고",
+      "logoOpacity": "로고 투명도: {n}%",
+      "logoPosition": "로고 위치",
+      "accentColor": "강조 색상",
+      "backgroundColor": "배경색",
+      "backgroundType": "배경 유형",
+      "textColor": "텍스트 색상",
+      "solidColor": "단색",
+      "gradient": "그라데이션",
+      "gradientPreset": "그라데이션 프리셋",
+      "font": "글꼴",
+      "fontSize": "글꼴 크기: {n}px",
+      "uploadCustomFont": "+ 사용자 정의 글꼴 업로드",
+      "removeCustomFont": "{fontName} 삭제"
+    },
+    "buttons": {
+      "resetAll": "모두 초기화",
+      "exportConfig": "설정 내보내기",
+      "importConfig": "설정 가져오기"
+    },
+    "toasts": {
+      "fontTooLarge": "글꼴 파일이 너무 큽니다 (최대 2MB).",
+      "fontLoaded": "\"{name}\" 글꼴이 로드되었습니다",
+      "configExported": "설정이 내보내졌습니다",
+      "configImported": "설정을 성공적으로 가져왔습니다",
+      "invalidConfig": "유효하지 않은 설정 파일입니다",
+      "settingsReset": "설정이 초기화되었습니다"
+    },
+    "dialogs": {
+      "resetConfirm": "모든 설정을 초기화하시겠습니까?"
+    }
+  },
+  "export": {
+    "button": "PNG로 내보내기",
+    "generating": "생성 중...",
+    "downloaded": "이미지 다운로드됨",
+    "fontNotReady": "글꼴이 아직 로드되지 않았습니다. 잠시 기다려주세요.",
+    "failed": "내보내기 실패. 다시 시도해주세요.",
+    "fileName": "quote.png"
+  },
+  "imageUpload": {
+    "uploadLabel": "{label} 업로드",
+    "uploadButton": "+ {label} 업로드",
+    "removeButton": "{label} 삭제",
+    "altText": "{label} 업로드됨",
+    "errorFormat": "지원되지 않는 형식입니다. JPG, PNG, WebP, SVG 또는 GIF를 사용하세요.",
+    "errorSize": "이미지가 너무 큽니다 (최대 2MB)."
+  },
+  "quoteCard": {
+    "empty": "명언이 여기에 표시됩니다"
+  },
+  "quotePreview": {
+    "loadingFont": "글꼴 로딩 중..."
+  }
+}
