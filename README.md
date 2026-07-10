@@ -9,7 +9,7 @@
 This README is also available in [spanish](https://github.com/SantosAlarcon/quotify/blob/master/README-es.md) language.
 
 ## Features
-
+| Feature | Description |
 |---|---|
 | **4 layouts** | Classic, Modern, Bold Quote, Minimal |
 | **4 aspect ratios** | Square (1:1), Portrait (4:5), OG (1.91:1), Story (9:16) |
