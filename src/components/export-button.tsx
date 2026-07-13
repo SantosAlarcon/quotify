@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect, type RefObject } from 'react'
-import { toPng, toSvg } from 'html-to-image'
+import { toPng } from 'html-to-image'
+import { exportToSvg } from '../lib/svg-export'
 import { useQuoteStore } from '../store/quote-store'
 import { useTranslations } from '../i18n/use-translations'
 
@@ -39,12 +40,10 @@ export function ExportButton({ cardRef, disabled }: Props) {
     setExporting(format)
     setStatus('idle')
     try {
-      const fn = format === 'png' ? toPng : toSvg
-      const dataUrl = await fn(el, {
-        quality: 1,
-        pixelRatio: format === 'png' ? 2 : 1,
-        cacheBust: true,
-      })
+      const dataUrl =
+        format === 'png'
+          ? await toPng(el, { quality: 1, pixelRatio: 2, cacheBust: true })
+          : await exportToSvg(el)
 
       const a = document.createElement('a')
       a.href = dataUrl
