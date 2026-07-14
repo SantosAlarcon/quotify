@@ -1,4 +1,4 @@
-import { ImageResponse } from "takumi-js/response";
+import { render } from "takumi-js";
 import { buildQuoteCard, type CardExportState } from "../../lib/takumi-card";
 
 const MAX_BODY_SIZE = 5 * 1024 * 1024; // 5MB
@@ -60,11 +60,11 @@ export const POST = async (request: Request): Promise<Response> => {
 			emptyText,
 		});
 
-		console.log(options);
+		const buffer = await render(node, options);
 
-		return new ImageResponse(node, {
-			...options,
+		return new Response(new Uint8Array(buffer), {
 			status: 200,
+			headers: { "content-type": "image/png" },
 		});
 	} catch (err) {
 		console.error("Export render failed:", err);
