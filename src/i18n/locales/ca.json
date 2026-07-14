@@ -1,138 +1,139 @@
 {
-  "layout": {
-    "title": "Quotify — Generador d'imatges de cites",
-    "description": "Crea imatges de cites impressionants per a xarxes socials. Personalitza fonts, colors, dissenys i exporta com a PNG."
-  },
-  "header": {
-    "logoAriaLabel": "Quotify"
-  },
-  "home": {
-    "title": "Crea la teva cita"
-  },
-  "footer": {
-    "tagline": "Quotify — Crea imatges de cites boniques"
-  },
-  "editor": {
-    "sections": {
-      "layout": "Disseny",
-      "aspectRatio": "Relació d'aspecte",
-      "quote": "Cita",
-      "profile": "Perfil",
-      "branding": "Marca",
-      "typography": "Tipografia",
-      "importExport": "Importar / Exportar"
-    },
-    "layoutLabels": {
-      "classic": "Clàssic",
-      "modern": "Modern",
-      "boldQuote": "Cita destacada",
-      "minimal": "Minimalista"
-    },
-    "aspectRatioLabels": {
-      "square": "Quadrat",
-      "portrait": "Retrat",
-      "og": "OG",
-      "story": "Història"
-    },
-    "aspectRatioDims": {
-      "square": "1080×1080",
-      "portrait": "1080×1350",
-      "og": "1200×630",
-      "story": "1080×1920"
-    },
-    "alignmentLabels": {
-      "left": "Esquerra",
-      "center": "Centre",
-      "right": "Dreta"
-    },
-    "gradientLabels": {
-      "none": "Cap",
-      "sunset": "Posta de sol",
-      "ocean": "Oceà",
-      "forest": "Bosc",
-      "night": "Nit",
-      "peach": "Préssec",
-      "lavender": "Lavanda",
-      "mojave": "Mojave",
-      "aurora": "Aurora",
-      "crimson": "Crimson",
-      "mint": "Menta",
-      "golden": "Daurat",
-      "sky": "Cel",
-      "rose": "Rosa",
-      "emerald": "Maragda",
-      "twilight": "Crepuscle"
-    },
-    "fontCategories": {
-      "serif": "Serif",
-      "sansSerif": "Sans Serif",
-      "monospace": "Monoespaiada",
-      "custom": "Personalitzada"
-    },
-    "labels": {
-      "quoteText": "Text de la cita",
-      "markdownSupported": "(Markdown compatible)",
-      "quotePlaceholder": "Escriu la teva cita... **negreta**, *cursiva*, [enllaços](url)",
-      "textAlignment": "Alineació del text",
-      "name": "Nom",
-      "namePlaceholder": "El teu nom",
-      "headline": "Títol",
-      "headlinePlaceholder": "El teu títol o eslògan",
-      "photo": "Foto",
-      "logo": "Logotip",
-      "logoOpacity": "Opacitat del logotip: {n}%",
-      "logoPosition": "Posició del logotip",
-      "accentColor": "Color d'accent",
-      "backgroundColor": "Color de fons",
-      "backgroundType": "Tipus de fons",
-      "textColor": "Color del text",
-      "solidColor": "Color sòlid",
-      "gradient": "Degradat",
-      "gradientPreset": "Preajust de degradat",
-      "font": "Font",
-      "fontSize": "Mida de la font: {n}px",
-      "uploadCustomFont": "+ Pujar font personalitzada",
-      "removeCustomFont": "Eliminar {fontName}"
-    },
-    "buttons": {
-      "resetAll": "Restablir tot",
-      "exportConfig": "Exportar configuració",
-      "importConfig": "Importar configuració"
-    },
-    "toasts": {
-      "fontTooLarge": "El fitxer de font és massa gran (màx. 2 MB).",
-      "fontLoaded": "Font \"{name}\" carregada",
-      "configExported": "Configuració exportada",
-      "configImported": "Configuració importada correctament",
-      "invalidConfig": "Fitxer de configuració no vàlid",
-      "settingsReset": "Paràmetres restablerts"
-    },
-    "dialogs": {
-      "resetConfirm": "Estàs segur que vols restablir tots els paràmetres?"
-    }
-  },
-  "export": {
-    "button": "Exportar com a PNG",
-    "generating": "Generant...",
-    "downloaded": "Imatge descarregada",
-    "fontNotReady": "La font encara no s'ha carregat. Espera un moment.",
-    "failed": "Error en exportar. Torna-ho a intentar.",
-    "fileName": "cita.png",
-    "buttonSvg": "Exportar com a SVG",
-    "fileNameSvg": "cita.svg"
-  },
-  "imageUpload": {
-    "uploadLabel": "Pujar {label}",
-    "uploadButton": "+ Pujar {label}",
-    "removeButton": "Eliminar {label}",
-    "altText": "{label} pujat",
-    "errorFormat": "Format no compatible. Utilitza JPG, PNG, WebP, SVG o GIF.",
-    "errorSize": "Imatge massa gran (màx. 2 MB)."
-  },
-  "quoteCard": {
-    "empty": "La teva cita apareixerà aquí"
-  },
-  "quotePreview": {
-    "loadingFont": "Carregant font..."
-  }
+	"layout": {
+		"title": "Quotify — Generador d'imatges de cites",
+		"description": "Crea imatges de cites impressionants per a xarxes socials. Personalitza fonts, colors, dissenys i exporta com a PNG."
+	},
+	"header": {
+		"logoAriaLabel": "Quotify"
+	},
+	"home": {
+		"title": "Crea la teva cita"
+	},
+	"footer": {
+		"tagline": "Quotify — Crea imatges de cites boniques"
+	},
+	"editor": {
+		"sections": {
+			"layout": "Disseny",
+			"aspectRatio": "Relació d'aspecte",
+			"quote": "Cita",
+			"profile": "Perfil",
+			"branding": "Marca",
+			"typography": "Tipografia",
+			"templates": "Plantilles",
+			"importExport": "Importar / Exportar"
+		},
+		"layoutLabels": {
+			"classic": "Clàssic",
+			"modern": "Modern",
+			"boldQuote": "Cita destacada",
+			"minimal": "Minimalista"
+		},
+		"aspectRatioLabels": {
+			"square": "Quadrat",
+			"portrait": "Retrat",
+			"og": "OG",
+			"story": "Història"
+		},
+		"aspectRatioDims": {
+			"square": "1080×1080",
+			"portrait": "1080×1350",
+			"og": "1200×630",
+			"story": "1080×1920"
+		},
+		"alignmentLabels": {
+			"left": "Esquerra",
+			"center": "Centre",
+			"right": "Dreta"
+		},
+		"gradientLabels": {
+			"none": "Cap",
+			"sunset": "Posta de sol",
+			"ocean": "Oceà",
+			"forest": "Bosc",
+			"night": "Nit",
+			"peach": "Préssec",
+			"lavender": "Lavanda",
+			"mojave": "Mojave",
+			"aurora": "Aurora",
+			"crimson": "Crimson",
+			"mint": "Menta",
+			"golden": "Daurat",
+			"sky": "Cel",
+			"rose": "Rosa",
+			"emerald": "Maragda",
+			"twilight": "Crepuscle"
+		},
+		"fontCategories": {
+			"serif": "Serif",
+			"sansSerif": "Sans Serif",
+			"monospace": "Monoespaiada",
+			"custom": "Personalitzada"
+		},
+		"labels": {
+			"quoteText": "Text de la cita",
+			"markdownSupported": "(Markdown compatible)",
+			"quotePlaceholder": "Escriu la teva cita... **negreta**, *cursiva*, [enllaços](url)",
+			"textAlignment": "Alineació del text",
+			"name": "Nom",
+			"namePlaceholder": "El teu nom",
+			"headline": "Títol",
+			"headlinePlaceholder": "El teu títol o eslògan",
+			"photo": "Foto",
+			"logo": "Logotip",
+			"logoOpacity": "Opacitat del logotip: {n}%",
+			"logoPosition": "Posició del logotip",
+			"accentColor": "Color d'accent",
+			"backgroundColor": "Color de fons",
+			"backgroundType": "Tipus de fons",
+			"textColor": "Color del text",
+			"solidColor": "Color sòlid",
+			"gradient": "Degradat",
+			"gradientPreset": "Preajust de degradat",
+			"font": "Font",
+			"fontSize": "Mida de la font: {n}px",
+			"uploadCustomFont": "+ Pujar font personalitzada",
+			"removeCustomFont": "Eliminar {fontName}"
+		},
+		"buttons": {
+			"resetAll": "Restablir tot",
+			"exportConfig": "Exportar configuració",
+			"importConfig": "Importar configuració"
+		},
+		"toasts": {
+			"fontTooLarge": "El fitxer de font és massa gran (màx. 2 MB).",
+			"fontLoaded": "Font \"{name}\" carregada",
+			"configExported": "Configuració exportada",
+			"configImported": "Configuració importada correctament",
+			"invalidConfig": "Fitxer de configuració no vàlid",
+			"settingsReset": "Paràmetres restablerts"
+		},
+		"dialogs": {
+			"resetConfirm": "Estàs segur que vols restablir tots els paràmetres?"
+		}
+	},
+	"export": {
+		"button": "Exportar com a PNG",
+		"generating": "Generant...",
+		"downloaded": "Imatge descarregada",
+		"fontNotReady": "La font encara no s'ha carregat. Espera un moment.",
+		"failed": "Error en exportar. Torna-ho a intentar.",
+		"fileName": "cita.png",
+		"buttonSvg": "Exportar com a SVG",
+		"fileNameSvg": "cita.svg"
+	},
+	"imageUpload": {
+		"uploadLabel": "Pujar {label}",
+		"uploadButton": "+ Pujar {label}",
+		"removeButton": "Eliminar {label}",
+		"altText": "{label} pujat",
+		"errorFormat": "Format no compatible. Utilitza JPG, PNG, WebP, SVG o GIF.",
+		"errorSize": "Imatge massa gran (màx. 2 MB)."
+	},
+	"quoteCard": {
+		"empty": "La teva cita apareixerà aquí"
+	},
+	"quotePreview": {
+		"loadingFont": "Carregant font..."
+	}
 }

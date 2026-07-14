@@ -5,7 +5,7 @@
 	gap: var(--space-sm);
 	padding: var(--space-sm) var(--space-xl);
 	background-color: var(--app-accent);
-	color: light-dark(#ffffff, #0d0d1a);
+	color: light-dark(#eeeeee);
 	font-weight: 600;
 	font-size: 1rem;
 	border-radius: var(--radius-md);

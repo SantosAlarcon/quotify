@@ -1,8 +1,7 @@
 {
 	"layout": {
-		    "title": "Quotify — Generador de imágenes de citas",
-    "description": "Crea imágenes de citas impresionantes para redes sociales. Personaliza fuentes, colores, diseños y exporta como PNG.",
-		"description": "Quotify te permite crear citas en imágenes para compartir en redes sociales"
+		"title": "Quotify — Generador de imágenes de citas",
+		"description": "Crea imágenes de citas impresionantes para redes sociales. Personaliza fuentes, colores, diseños y exporta como PNG."
 	},
 	"header": {
 		"logoAriaLabel": "Quotify"
@@ -21,6 +20,7 @@
 			"profile": "Perfil",
 			"branding": "Marca",
 			"typography": "Tipografía",
+			"templates": "Plantillas",
 			"importExport": "Importar / Exportar"
 		},
 		"layoutLabels": {

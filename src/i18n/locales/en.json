@@ -1,8 +1,7 @@
 {
 	"layout": {
-		    "title": "Quotify — Quote Image Generator",
-    "description": "Create stunning quote images for social media. Customize fonts, colors, layouts, and export as PNG.",
-		"description": "Quotify lets you create image quotes for sharing in social media"
+		"title": "Quotify — Quote Image Generator",
+		"description": "Create stunning quote images for social media. Customize fonts, colors, layouts, and export as PNG."
 	},
 	"header": {
 		"logoAriaLabel": "Quotify"
@@ -28,7 +27,7 @@
 			"branding": "Branding",
 			"typography": "Typography",
 			"templates": "Templates",
-		"importExport": "Import / Export"
+			"importExport": "Import / Export"
 		},
 		"templateNames": {
 			"elegant": "Elegant",
