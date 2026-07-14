@@ -3,6 +3,25 @@ import { buildQuoteCard, type CardExportState } from "../../lib/takumi-card";
 
 const MAX_BODY_SIZE = 5 * 1024 * 1024; // 5MB
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let wasmModule: any = null;
+
+async function renderWithFallback(
+	node: Parameters<typeof render>[0],
+	options: Parameters<typeof render>[1],
+): Promise<Buffer | Uint8Array> {
+	try {
+		return await render(node, options);
+	} catch (err) {
+		console.warn("Native render failed, falling back to WASM:", err);
+		if (!wasmModule) {
+			const mod = await import("@takumi-rs/wasm/auto");
+			wasmModule = mod.default;
+		}
+		return await render(node, { ...options, module: wasmModule });
+	}
+}
+
 const VALID_LOCALES = new Set([
 	"ca",
 	"de",
@@ -60,7 +79,7 @@ export const POST = async (request: Request): Promise<Response> => {
 			emptyText,
 		});
 
-		const buffer = await render(node, options);
+		const buffer = await renderWithFallback(node, options);
 
 		return new Response(new Uint8Array(buffer), {
 			status: 200,
