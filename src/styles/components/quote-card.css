@@ -315,14 +315,14 @@
 }
 
 .card-name {
-	font-size: 1.25rem;
+	font-size: 1.25em;
 	font-weight: 700;
 	line-height: 1.3;
 	margin: 0;
 }
 
 .card-headline {
-	font-size: 1rem;
+	font-size: 1em;
 	margin: 0;
 	font-weight: 400;
 }

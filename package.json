@@ -12,7 +12,6 @@
   "dependencies": {
     "dompurify": "^3.4.11",
     "hono": "^4.12.28",
-    "html-to-image": "^1.11.13",
     "marked": "^18.0.5",
     "react": "~19.2.7",
     "react-dom": "~19.2.7",

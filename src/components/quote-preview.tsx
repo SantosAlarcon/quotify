@@ -1,6 +1,5 @@
 'use client'
 
-import { forwardRef, type Ref } from 'react'
 import { useQuoteStore } from '../store/quote-store'
 import { QuoteCardContent } from './quote-card'
 import { useFontLoader } from '../lib/use-font-loader'
@@ -10,17 +9,14 @@ type Props = {
   id?: string
 }
 
-export const QuotePreview = forwardRef(function QuotePreview(
-  { id }: Props,
-  ref: Ref<HTMLDivElement>,
-) {
+export function QuotePreview({ id }: Props) {
   const state = useQuoteStore()
   const { t } = useTranslations()
 
   useFontLoader()
 
   return (
-    <div className={`preview-frame${!state.isFontReady ? ' preview-frame--loading-font' : ''}`} ref={ref} id={id}>
+    <div className={`preview-frame${!state.isFontReady ? ' preview-frame--loading-font' : ''}`} id={id}>
       <div className="preview-frame__card">
         <QuoteCardContent
           text={state.text}
@@ -46,4 +42,4 @@ export const QuotePreview = forwardRef(function QuotePreview(
       )}
     </div>
   )
-})
+}

@@ -1,20 +1,15 @@
 'use client'
 
-import { toPng } from 'html-to-image'
 import { type RefObject, useEffect, useRef, useState } from 'react'
 import { useTranslations } from '../i18n/use-translations'
-import { exportToSvg } from '../lib/svg-export'
 import { useQuoteStore } from '../store/quote-store'
 
 type Props = {
-	cardRef: RefObject<HTMLElement | null>
 	disabled?: boolean
 }
 
-type Format = 'png'
-
-export function ExportButton({ cardRef, disabled }: Props) {
-	const [exporting, setExporting] = useState<Format | null>(null)
+export function ExportButton({ disabled }: Props) {
+	const [exporting, setExporting] = useState<boolean>(false)
 	const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 	const liveRef = useRef<HTMLDivElement>(null)
 	const isFontReady = useQuoteStore(s => s.isFontReady)
@@ -27,34 +22,61 @@ export function ExportButton({ cardRef, disabled }: Props) {
 		}
 	}, [status])
 
-	const handleExport = async (format: Format) => {
-		const el = cardRef.current
-		if (!el) return
-
+	const handleExport = async () => {
 		if (!isFontReady) {
 			setStatus('error')
 			setTimeout(() => setStatus('idle'), 2000)
 			return
 		}
 
-		setExporting(format)
+		setExporting(true)
 		setStatus('idle')
 		try {
-			const dataUrl =
-				format === 'png'
-					? await toPng(el, { quality: 1, pixelRatio: 2, cacheBust: true })
-					: await exportToSvg(el)
+			const state = useQuoteStore.getState()
 
+			const res = await fetch('/export', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					text: state.text,
+					name: state.name,
+					headline: state.headline,
+					photo: state.photo,
+					logo: state.logo,
+					logoOpacity: state.logoOpacity,
+					logoPosition: state.logoPosition,
+					cardBgColor: state.cardBgColor,
+					cardTextColor: state.cardTextColor,
+					fontFamily: state.fontFamily,
+					fontSize: state.fontSize,
+					textAlign: state.textAlign,
+					layoutPreset: state.layoutPreset,
+					aspectRatio: state.aspectRatio,
+					accentColor: state.accentColor,
+					bgType: state.bgType,
+					bgGradient: state.bgGradient,
+					customFont: state.customFont,
+					emptyText: t('quoteCard.empty'),
+				}),
+			})
+
+			if (!res.ok) {
+				throw new Error(`Export failed: ${res.status}`)
+			}
+
+			const blob = await res.blob()
+			const url = URL.createObjectURL(blob)
 			const a = document.createElement('a')
-			a.href = dataUrl
-			a.download = format === 'png' ? t('export.fileName') : t('export.fileNameSvg')
+			a.href = url
+			a.download = t('export.fileName')
 			a.click()
+			setTimeout(() => URL.revokeObjectURL(url), 100)
 			setStatus('success')
 		} catch (err) {
 			console.error('Export failed:', err)
 			setStatus('error')
 		} finally {
-			setExporting(null)
+			setExporting(false)
 		}
 	}
 
@@ -64,22 +86,13 @@ export function ExportButton({ cardRef, disabled }: Props) {
 				<button
 					type='button'
 					className="export-btn"
-					onClick={() => handleExport('png')}
-					disabled={exporting !== null || disabled}
-					aria-busy={exporting === 'png'}
+					onClick={handleExport}
+					disabled={exporting || disabled}
+					aria-busy={exporting}
 					aria-label={t('export.button')}
 				>
-					{exporting === 'png' ? t('export.generating') : t('export.button')}
+					{exporting ? t('export.generating') : t('export.button')}
 				</button>
-				{/* <button */}
-				{/*   className="export-btn" */}
-				{/*   onClick={() => handleExport('svg')} */}
-				{/*   disabled={exporting !== null || disabled} */}
-				{/*   aria-busy={exporting === 'svg'} */}
-				{/*   aria-label={t('export.buttonSvg')} */}
-				{/* > */}
-				{/*   {exporting === 'svg' ? t('export.generating') : t('export.buttonSvg')} */}
-				{/* </button> */}
 			</div>
 			<div
 				ref={liveRef}
