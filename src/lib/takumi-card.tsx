@@ -150,6 +150,11 @@ const CARD_STYLESHEET_RAW = `
 	user-select: none;
 	font-family: Georgia, 'Times New Roman', serif;
 }
+
+.layout-bold-quote .card-dq svg {
+	transform: translate(1.95em, 1.025em) scale(6);
+}
+
 .layout-bold-quote .card-header {
 	position: absolute;
 	top: 40px;
@@ -751,9 +756,10 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 			{showDq && (
 				<span
 					className={`card-dq${layoutPreset === 'gradient' ? ' card-dq--gradient' : ''}`}
-					style={{ color: accentColor }}
 				>
-					{'\u201C'}
+					<svg style={{color: accentColor}}>
+						<use href="images/quotes.svg#quotes" />
+					</svg>
 				</span>
 			)}
 

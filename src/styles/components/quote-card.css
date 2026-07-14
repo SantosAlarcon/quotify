@@ -99,6 +99,11 @@
 		pointer-events: none;
 		user-select: none;
 		font-family: Georgia, 'Times New Roman', serif;
+
+		& svg {
+			color: currentColor;
+			transform: translate(1.95em, 1.025em) scale(6);
+		}
 	}
 
 	.card-header {
