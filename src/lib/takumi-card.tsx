@@ -1,7 +1,7 @@
 import { googleFonts } from 'takumi-js/helpers'
 import { marked } from 'marked'
 import { getPrimaryFontName, FONT_OPTIONS } from './fonts'
-import type { QuoteState } from '../store/quote-store'
+import type { QuoteState, LogoPosition } from '../store/quote-store'
 
 export type CardExportState = Pick<
 	QuoteState,
@@ -42,6 +42,12 @@ const SYSTEM_FONT_MAP: Record<string, string> = {
 }
 
 const REFERENCE_WIDTH = 644
+
+const LOGO_POS_CLASS: Record<LogoPosition, string> = {
+	left: 'card-logo--left',
+	center: 'card-logo--center',
+	right: 'card-logo--right',
+}
 
 function scalePx(css: string, factor: number): string {
 	return css.replace(/(\d+(?:\.\d+)?)px/g, (_, n) => `${(parseFloat(n) * factor).toFixed(1).replace(/\.0$/, '')}px`)
@@ -311,6 +317,20 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-gradient .card-gradient-headline {
 	opacity: 0.75;
+}
+
+.card-logo--left {
+	left: 2em;
+	transform: translateX(-45%);
+}
+.card-logo--center {
+	left: 50%;
+	right: auto;
+	transform: translateX(-50%);
+}
+.card-logo--right {
+	right: 2em;
+	transform: translateX(45%);
 }
 
 .card-header {
@@ -621,12 +641,7 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 			? { backgroundImage: bgGradient }
 			: { backgroundColor: cardBgColor }
 
-	const logoPosStyle: React.CSSProperties =
-		logoPosition === 'left'
-			? { left: '20px', right: 'auto' }
-			: logoPosition === 'center'
-				? { left: '50%', right: 'auto', transform: 'translateX(-50%)' }
-				: { right: '20px' }
+	const logoPosClass = LOGO_POS_CLASS[logoPosition]
 
 	const alignClass =
 		textAlign === 'center'
@@ -676,7 +691,7 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 					<img
 						src={logo}
 						alt=""
-						className="card-logo"
+						className={`card-logo ${logoPosClass}`}
 						style={{ opacity: logoOpacity }}
 					/>
 				)}
@@ -715,7 +730,7 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 							<img
 								src={logo}
 								alt=""
-								className="card-logo card-logo--split"
+								className={`card-logo card-logo--split ${logoPosClass}`}
 								style={{ opacity: logoOpacity }}
 							/>
 						)}
@@ -791,8 +806,8 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 					<img
 						src={logo}
 						alt=""
-						className="card-logo"
-						style={{ opacity: logoOpacity, ...logoPosStyle }}
+						className={`card-logo ${logoPosClass}`}
+						style={{ opacity: logoOpacity }}
 					/>
 				)}
 		</div>

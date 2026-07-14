@@ -298,6 +298,20 @@
 	}
 }
 
+/* ── Logo position ── */
+.card-logo--left {
+	left: 1.5em;
+	right: auto;
+}
+.card-logo--center {
+	left: 50%;
+	right: auto;
+	transform: translateX(-50%);
+}
+.card-logo--right {
+	right: 1.55em;
+}
+
 /* ── Shared elements ── */
 .card-header {
 	display: flex;

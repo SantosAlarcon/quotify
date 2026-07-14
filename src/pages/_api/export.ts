@@ -60,6 +60,8 @@ export const POST = async (request: Request): Promise<Response> => {
 			emptyText,
 		});
 
+		console.log(options);
+
 		return new ImageResponse(node, {
 			...options,
 			status: 200,

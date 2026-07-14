@@ -2,7 +2,7 @@
 
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
-import type { QuoteState, TextAlign } from '../store/quote-store'
+import type { QuoteState, TextAlign, LogoPosition } from '../store/quote-store'
 import { useTranslations } from '../i18n/use-translations'
 
 const RATIO_STYLE: Record<string, string> = {
@@ -39,6 +39,12 @@ const ALIGN_CLASS: Record<TextAlign, string> = {
   right: 'card-text--right',
 }
 
+const LOGO_POS_CLASS: Record<LogoPosition, string> = {
+  left: 'card-logo--left',
+  center: 'card-logo--center',
+  right: 'card-logo--right',
+}
+
 function renderMarkdown(text: string): string {
   const raw = marked.parse(text, { async: false }) as string
   if (typeof window === 'undefined') return raw
@@ -66,12 +72,7 @@ export function QuoteCardContent({
 }: CardProps) {
   const { t } = useTranslations()
   const alignClass = ALIGN_CLASS[textAlign]
-  const logoPosStyle: React.CSSProperties =
-    logoPosition === 'left'
-      ? { left: '1.25rem', right: 'auto' }
-      : logoPosition === 'center'
-        ? { left: '50%', right: 'auto', transform: 'translateX(-50%)' }
-        : { right: '1.25rem' }
+  const logoPosClass = LOGO_POS_CLASS[logoPosition]
   const bgStyle: React.CSSProperties =
     bgType === 'gradient' && bgGradient
       ? { backgroundImage: bgGradient }
@@ -164,7 +165,7 @@ export function QuoteCardContent({
               <img
                 src={logo}
                 alt=''
-                className='card-logo card-logo--split'
+                className={`card-logo card-logo--split ${logoPosClass}`}
                 style={{ opacity: logoOpacity }}
               />
             )}
@@ -218,8 +219,8 @@ export function QuoteCardContent({
         <img
           src={logo}
           alt=''
-          className='card-logo'
-          style={{ opacity: logoOpacity, ...logoPosStyle }}
+          className={`card-logo ${logoPosClass}`}
+          style={{ opacity: logoOpacity }}
         />
       )}
     </div>
