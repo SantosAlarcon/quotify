@@ -18,7 +18,7 @@ This README is also available in [spanish](https://github.com/SantosAlarcon/quot
 | **Colors** | Accent color, background (solid or **16 gradients**), text color |
 | **Markdown** | **bold**, *italic*, `code`, [links](url), lists, blockquotes |
 | **Images** | Upload profile photo and logo (with opacity and position controls) |
-| **Export** | PNG **and SVG** at full resolution |
+| **Export** | PNG at full resolution |
 | **13 templates** | One-click preset styles to jumpstart your design |
 | **Dark mode** | Auto (system) + manual toggle: Light / Dark / System |
 | **Languages** | 11 locales — EN, ES, CA, FR, PT, DE, JA, IT, KO, ZH-CN, ZH-TW |
