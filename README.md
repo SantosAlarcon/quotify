@@ -39,7 +39,7 @@ This README is also available in [spanish](https://github.com/SantosAlarcon/quot
 | State | Zustand with `persist` |
 | CSS | Modern CSS — `light-dark()`, CSS Nesting, implicit layers, `svh` |
 | Typography | Google Fonts via CSS + dynamic `@font-face` for local fonts |
-| Export | `html-to-image` → PNG / SVG |
+| Export | `takumi-js` (Rust engine) → PNG server-side |
 | Markdown | `marked` + `dompurify` |
 | i18n | **Zero dependencies** — flat JSON + Zustand + browser detection |
 | TypeScript | Strict mode, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes` |

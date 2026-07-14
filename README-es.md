@@ -36,7 +36,7 @@
 | Estado | Zustand con `persist` |
 | CSS | CSS moderno — `light-dark()`, CSS Nesting, capas implícitas, `svh` |
 | Tipografía | Google Fonts via CSS + `@font-face` dinámico para fuentes locales |
-| Exportación | `html-to-image` → PNG |
+| Exportación | `takumi-js` (motor Rust) → PNG server-side |
 | Markdown | `marked` + `dompurify` |
 | i18n | **0 dependencias** — JSON plano + Zustand + detección del navegador |
 | TypeScript | Strict mode, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes` |
