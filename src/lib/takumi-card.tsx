@@ -67,7 +67,6 @@ const CARD_STYLESHEET_RAW = `
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-	border-radius: 12px;
 	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
 }
 
