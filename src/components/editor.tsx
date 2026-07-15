@@ -3,7 +3,13 @@
 import { type ChangeEvent, useId, useRef, useState } from "react";
 import { useTranslations } from "../i18n/use-translations";
 import { FONT_OPTIONS } from "../lib/fonts";
-import type { AspectRatio, BgType, LayoutPreset, LogoPosition, TextAlign } from "../store/quote-store";
+import type {
+	AspectRatio,
+	BgType,
+	LayoutPreset,
+	LogoPosition,
+	TextAlign,
+} from "../store/quote-store";
 import { useQuoteStore } from "../store/quote-store";
 import { ImageUpload } from "./image-upload";
 import { TemplateGallery } from "./template-gallery";
@@ -21,10 +27,26 @@ const LAYOUTS: { value: LayoutPreset; labelKey: string }[] = [
 ];
 
 const RATIOS: { value: AspectRatio; labelKey: string; dims: string }[] = [
-	{ value: "1:1", labelKey: "editor.aspectRatioLabels.square", dims: "1080×1080" },
-	{ value: "4:5", labelKey: "editor.aspectRatioLabels.portrait", dims: "1080×1350" },
-	{ value: "1.91:1", labelKey: "editor.aspectRatioLabels.og", dims: "1200×630" },
-	{ value: "9:16", labelKey: "editor.aspectRatioLabels.story", dims: "1080×1920" },
+	{
+		value: "1:1",
+		labelKey: "editor.aspectRatioLabels.square",
+		dims: "1080×1080",
+	},
+	{
+		value: "4:5",
+		labelKey: "editor.aspectRatioLabels.portrait",
+		dims: "1080×1350",
+	},
+	{
+		value: "1.91:1",
+		labelKey: "editor.aspectRatioLabels.og",
+		dims: "1200×630",
+	},
+	{
+		value: "9:16",
+		labelKey: "editor.aspectRatioLabels.story",
+		dims: "1080×1920",
+	},
 ];
 
 const ALIGNMENTS: { value: TextAlign; labelKey: string }[] = [
@@ -35,21 +57,66 @@ const ALIGNMENTS: { value: TextAlign; labelKey: string }[] = [
 
 const GRADIENT_PRESETS: { labelKey: string; value: string }[] = [
 	{ labelKey: "editor.gradientLabels.none", value: "" },
-	{ labelKey: "editor.gradientLabels.sunset", value: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
-	{ labelKey: "editor.gradientLabels.ocean", value: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
-	{ labelKey: "editor.gradientLabels.forest", value: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
-	{ labelKey: "editor.gradientLabels.night", value: "linear-gradient(135deg, #0c3483 0%, #a2b6df 100%)" },
-	{ labelKey: "editor.gradientLabels.peach", value: "linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)" },
-	{ labelKey: "editor.gradientLabels.lavender", value: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)" },
-	{ labelKey: "editor.gradientLabels.mojave", value: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)" },
-	{ labelKey: "editor.gradientLabels.aurora", value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-	{ labelKey: "editor.gradientLabels.crimson", value: "linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%)" },
-	{ labelKey: "editor.gradientLabels.mint", value: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)" },
-	{ labelKey: "editor.gradientLabels.golden", value: "linear-gradient(135deg, #f5af19 0%, #f12711 100%)" },
-	{ labelKey: "editor.gradientLabels.sky", value: "linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%)" },
-	{ labelKey: "editor.gradientLabels.rose", value: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)" },
-	{ labelKey: "editor.gradientLabels.emerald", value: "linear-gradient(135deg, #059669 0%, #34d399 100%)" },
-	{ labelKey: "editor.gradientLabels.twilight", value: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)" },
+	{
+		labelKey: "editor.gradientLabels.sunset",
+		value: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.ocean",
+		value: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.forest",
+		value: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.night",
+		value: "linear-gradient(135deg, #0c3483 0%, #a2b6df 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.peach",
+		value: "linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.lavender",
+		value: "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.mojave",
+		value: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.aurora",
+		value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.crimson",
+		value: "linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.mint",
+		value: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.golden",
+		value: "linear-gradient(135deg, #f5af19 0%, #f12711 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.sky",
+		value: "linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.rose",
+		value: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.emerald",
+		value: "linear-gradient(135deg, #059669 0%, #34d399 100%)",
+	},
+	{
+		labelKey: "editor.gradientLabels.twilight",
+		value: "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
+	},
 ];
 
 const CATEGORY_KEYS: Record<string, string> = {
@@ -159,7 +226,9 @@ export function Editor() {
 			bgType,
 			bgGradient,
 		};
-		const blob = new Blob([JSON.stringify(config, null, 2)], { type: "application/json" });
+		const blob = new Blob([JSON.stringify(config, null, 2)], {
+			type: "application/json",
+		});
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement("a");
 		a.href = url;
@@ -183,19 +252,33 @@ export function Editor() {
 
 				if (typeof data.name === "string") setName(data.name);
 				if (typeof data.headline === "string") setHeadline(data.headline);
-				if (typeof data.photo === "string" || data.photo === null) setPhoto(data.photo);
-				if (typeof data.logo === "string" || data.logo === null) setLogo(data.logo);
-				if (typeof data.logoOpacity === "number") setLogoOpacity(data.logoOpacity);
-				if (["left", "center", "right"].includes(data.logoPosition)) setLogoPosition(data.logoPosition);
-				if (typeof data.cardBgColor === "string") setCardBgColor(data.cardBgColor);
-				if (typeof data.cardTextColor === "string") setCardTextColor(data.cardTextColor);
+				if (typeof data.photo === "string" || data.photo === null)
+					setPhoto(data.photo);
+				if (typeof data.logo === "string" || data.logo === null)
+					setLogo(data.logo);
+				if (typeof data.logoOpacity === "number")
+					setLogoOpacity(data.logoOpacity);
+				if (["left", "center", "right"].includes(data.logoPosition))
+					setLogoPosition(data.logoPosition);
+				if (typeof data.cardBgColor === "string")
+					setCardBgColor(data.cardBgColor);
+				if (typeof data.cardTextColor === "string")
+					setCardTextColor(data.cardTextColor);
 				if (typeof data.fontFamily === "string") setFontFamily(data.fontFamily);
 				if (typeof data.fontSize === "number") setFontSize(data.fontSize);
-				if (["left", "center", "right"].includes(data.textAlign)) setTextAlign(data.textAlign);
+				if (["left", "center", "right"].includes(data.textAlign))
+					setTextAlign(data.textAlign);
 				if (typeof data.text === "string") setText(data.text);
-				if (["classic", "modern", "bold-quote", "minimal"].includes(data.layoutPreset)) setLayoutPreset(data.layoutPreset);
-				if (["1:1", "4:5", "1.91:1", "9:16"].includes(data.aspectRatio)) setAspectRatio(data.aspectRatio);
-				if (typeof data.accentColor === "string") setAccentColor(data.accentColor);
+				if (
+					["classic", "modern", "bold-quote", "minimal"].includes(
+						data.layoutPreset,
+					)
+				)
+					setLayoutPreset(data.layoutPreset);
+				if (["1:1", "4:5", "1.91:1", "9:16"].includes(data.aspectRatio))
+					setAspectRatio(data.aspectRatio);
+				if (typeof data.accentColor === "string")
+					setAccentColor(data.accentColor);
 				if (["solid", "gradient"].includes(data.bgType)) setBgType(data.bgType);
 				if (typeof data.bgGradient === "string") setBgGradient(data.bgGradient);
 				showToast(t("editor.toasts.configImported"));
@@ -214,7 +297,9 @@ export function Editor() {
 		}
 	};
 
-	const categories = CATEGORY_ORDER.filter(c => FONT_OPTIONS.some(f => f.category === c));
+	const categories = CATEGORY_ORDER.filter((c) =>
+		FONT_OPTIONS.some((f) => f.category === c),
+	);
 
 	return (
 		<>
@@ -265,7 +350,7 @@ export function Editor() {
 								}
 							>
 								<span
-									className={`ratio-btn__thumb ratio-btn__thumb--${r.value.replace(":", "-")}`}
+									className={`ratio-btn__thumb ratio-btn__thumb--${r.value === "1.91:1" ? "1-91-1" : r.value.replace(":", "-")}`}
 								/>
 								<span className="ratio-btn__label">
 									{t(r.labelKey)}
@@ -280,7 +365,10 @@ export function Editor() {
 					<h2>{t("editor.sections.quote")}</h2>
 					<label>
 						<span>
-							{t("editor.labels.quoteText")} <small title="**bold**, *italic*, `code`, [links](url), lists, blockquotes">{t("editor.labels.markdownSupported")}</small>
+							{t("editor.labels.quoteText")}{" "}
+							<small title="**bold**, *italic*, `code`, [links](url), lists, blockquotes">
+								{t("editor.labels.markdownSupported")}
+							</small>
 						</span>
 						<textarea
 							value={text}
@@ -290,7 +378,9 @@ export function Editor() {
 						/>
 					</label>
 					<div>
-						<span className="editor__label">{t("editor.labels.textAlignment")}</span>
+						<span className="editor__label">
+							{t("editor.labels.textAlignment")}
+						</span>
 						<div className="align-grid">
 							{ALIGNMENTS.map((a) => (
 								<button
@@ -336,11 +426,19 @@ export function Editor() {
 
 				<section className="editor__section">
 					<h2>{t("editor.sections.branding")}</h2>
-					<ImageUpload label={t("editor.labels.logo")} currentImage={logo} onImageChange={setLogo} />
+					<ImageUpload
+						label={t("editor.labels.logo")}
+						currentImage={logo}
+						onImageChange={setLogo}
+					/>
 					{logo && (
 						<>
 							<label>
-								<span>{t("editor.labels.logoOpacity", { n: Math.round(logoOpacity * 100) })}</span>
+								<span>
+									{t("editor.labels.logoOpacity", {
+										n: Math.round(logoOpacity * 100),
+									})}
+								</span>
 								<input
 									type="range"
 									min="0.1"
@@ -351,7 +449,9 @@ export function Editor() {
 								/>
 							</label>
 							<div>
-								<span className="editor__label">{t("editor.labels.logoPosition")}</span>
+								<span className="editor__label">
+									{t("editor.labels.logoPosition")}
+								</span>
 								<div className="align-grid">
 									{(["left", "center", "right"] as LogoPosition[]).map((p) => (
 										<button
@@ -396,7 +496,9 @@ export function Editor() {
 					</label>
 					{bgType === "gradient" && (
 						<div>
-							<span className="editor__label">{t("editor.labels.gradientPreset")}</span>
+							<span className="editor__label">
+								{t("editor.labels.gradientPreset")}
+							</span>
 							<div className="gradient-grid">
 								{GRADIENT_PRESETS.map((g) => (
 									<button
@@ -440,7 +542,11 @@ export function Editor() {
 							{categories.map((cat) => (
 								<optgroup key={cat} label={t(CATEGORY_KEYS[cat] ?? cat)}>
 									{FONT_OPTIONS.filter((f) => f.category === cat).map((f) => (
-										<option key={f.id} value={f.fontFamily} style={{ fontFamily: f.fontFamily }}>
+										<option
+											key={f.id}
+											value={f.fontFamily}
+											style={{ fontFamily: f.fontFamily }}
+										>
 											{f.label}
 										</option>
 									))}
@@ -482,18 +588,16 @@ export function Editor() {
 								className="font-upload__remove"
 								onClick={handleRemoveFont}
 							>
-								{t("editor.labels.removeCustomFont", { fontName: customFont.name })}
+								{t("editor.labels.removeCustomFont", {
+									fontName: customFont.name,
+								})}
 							</button>
 						)}
 					</div>
 				</section>
 
 				<section className="editor__section editor__section--reset">
-					<button
-						type="button"
-						className="reset-btn"
-						onClick={handleReset}
-					>
+					<button type="button" className="reset-btn" onClick={handleReset}>
 						{t("editor.buttons.resetAll")}
 					</button>
 				</section>
