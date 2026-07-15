@@ -89,7 +89,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-classic .card-logo {
 	position: absolute;
-	bottom: 20px;
+	bottom: 38px;
 	max-height: 72px;
 	object-fit: contain;
 }
@@ -124,7 +124,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-modern .card-logo {
 	position: absolute;
-	bottom: 20px;
+	bottom: 38px;
 	max-height: 48px;
 	object-fit: contain;
 }
@@ -151,12 +151,12 @@ const CARD_STYLESHEET_RAW = `
 	pointer-events: none;
 	user-select: none;
 	font-family: Georgia, 'Times New Roman', serif;
-	transform: translate(0.1em, 0.15em) scale(1);
+	transform: translate(0.12em, 0.18em) scale(1);
 }
 
 .layout-bold-quote .card-header {
 	position: absolute;
-	top: 40px;
+	top: 50px;
 	left: 40px;
 	display: flex;
 	align-items: center;
@@ -169,7 +169,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-bold-quote .card-logo {
 	position: absolute;
-	bottom: 20px;
+	bottom: 38px;
 	max-height: 72px;
 	object-fit: contain;
 }
@@ -218,7 +218,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-centered .card-logo {
 	position: absolute;
-	bottom: 20px;
+	bottom: 38px;
 	max-height: 64px;
 	object-fit: contain;
 }
@@ -268,7 +268,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-split .card-logo--split {
 	position: absolute;
-	bottom: 20px;
+	bottom: 38px;
 	right: 20px;
 	max-height: 48px;
 	object-fit: contain;
@@ -329,8 +329,7 @@ const CARD_STYLESHEET_RAW = `
 }
 
 .card-logo--left {
-	left: 2em;
-	transform: translateX(-45%);
+	left: 4.5em;
 }
 .card-logo--center {
 	left: 50%;
@@ -338,8 +337,7 @@ const CARD_STYLESHEET_RAW = `
 	transform: translateX(-50%);
 }
 .card-logo--right {
-	right: 2em;
-	transform: translateX(35%);
+	right: 6em;
 }
 
 .card-header {
@@ -500,7 +498,7 @@ const SELF_CLOSING_TAGS = new Set([
 	"meta",
 	"source",
 	"svg",
-	"use"
+	"use",
 ]);
 
 function parseAttributes(raw: string): Record<string, string> {
@@ -780,7 +778,10 @@ function buildCardNode(
 				<span
 					className={`card-dq${layoutPreset === "gradient" ? " card-dq--gradient" : ""}`}
 				>
-					<svg viewBox="2.679 4.675 18.528 14.508" style={{ color: accentColor }}>
+					<svg
+						viewBox="2.679 4.675 18.528 14.508"
+						style={{ color: accentColor }}
+					>
 						<path
 							fill="currentColor"
 							d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"
