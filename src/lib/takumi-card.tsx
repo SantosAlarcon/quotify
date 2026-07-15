@@ -1,61 +1,64 @@
-import { googleFonts } from 'takumi-js/helpers'
-import { marked } from 'marked'
-import { getPrimaryFontName, FONT_OPTIONS } from './fonts'
-import type { QuoteState, LogoPosition } from '../store/quote-store'
+import { marked } from "marked";
+import { googleFonts } from "takumi-js/helpers";
+import type { LogoPosition, QuoteState } from "../store/quote-store";
+import { FONT_OPTIONS, getPrimaryFontName } from "./fonts";
 
 export type CardExportState = Pick<
 	QuoteState,
-	| 'text'
-	| 'name'
-	| 'headline'
-	| 'photo'
-	| 'logo'
-	| 'logoOpacity'
-	| 'logoPosition'
-	| 'cardBgColor'
-	| 'cardTextColor'
-	| 'fontFamily'
-	| 'fontSize'
-	| 'textAlign'
-	| 'layoutPreset'
-	| 'aspectRatio'
-	| 'accentColor'
-	| 'bgType'
-	| 'bgGradient'
+	| "text"
+	| "name"
+	| "headline"
+	| "photo"
+	| "logo"
+	| "logoOpacity"
+	| "logoPosition"
+	| "cardBgColor"
+	| "cardTextColor"
+	| "fontFamily"
+	| "fontSize"
+	| "textAlign"
+	| "layoutPreset"
+	| "aspectRatio"
+	| "accentColor"
+	| "bgType"
+	| "bgGradient"
 > & {
-	customFont?: QuoteState['customFont']
-	emptyText?: string
-}
+	customFont?: QuoteState["customFont"];
+	emptyText?: string;
+};
 
 const ASPECT_DIMENSIONS: Record<string, { width: number; height: number }> = {
-	'1:1': { width: 1080, height: 1080 },
-	'4:5': { width: 1080, height: 1350 },
-	'1.91:1': { width: 1200, height: 630 },
-	'9:16': { width: 1080, height: 1920 },
-}
+	"1:1": { width: 1080, height: 1080 },
+	"4:5": { width: 1080, height: 1350 },
+	"1.91:1": { width: 1200, height: 630 },
+	"9:16": { width: 1080, height: 1920 },
+};
 
 const SYSTEM_FONT_MAP: Record<string, string> = {
-	Georgia: 'Noto Serif',
-	'Times New Roman': 'Noto Serif',
-	'Courier New': 'Source Code Pro',
-	Arial: 'Inter',
-}
+	Georgia: "Noto Serif",
+	"Times New Roman": "Noto Serif",
+	"Courier New": "Source Code Pro",
+	Arial: "Inter",
+};
 
-const REFERENCE_WIDTH = 644
+const REFERENCE_WIDTH = 644;
 
 const LOGO_POS_CLASS: Record<LogoPosition, string> = {
-	left: 'card-logo--left',
-	center: 'card-logo--center',
-	right: 'card-logo--right',
-}
+	left: "card-logo--left",
+	center: "card-logo--center",
+	right: "card-logo--right",
+};
 
 function scalePx(css: string, factor: number): string {
-	return css.replace(/(\d+(?:\.\d+)?)px/g, (_, n) => `${(parseFloat(n) * factor).toFixed(1).replace(/\.0$/, '')}px`)
+	return css.replace(
+		/(\d+(?:\.\d+)?)px/g,
+		(_, n) => `${(parseFloat(n) * factor).toFixed(1).replace(/\.0$/, "")}px`,
+	);
 }
 
 function getCardStylesheet(exportWidth: number): string {
-	const factor = exportWidth / REFERENCE_WIDTH
-	return scalePx(CARD_STYLESHEET_RAW, factor)
+	const factor = exportWidth / REFERENCE_WIDTH;
+	return scalePx(CARD_STYLESHEET_RAW, factor);
 }
 
 const CARD_STYLESHEET_RAW = `
@@ -143,16 +146,13 @@ const CARD_STYLESHEET_RAW = `
 	position: absolute;
 	font-size: 400px;
 	line-height: 1;
-	opacity: 0.12;
+	opacity: 0.15;
 	top: -32px;
 	left: -8px;
 	pointer-events: none;
 	user-select: none;
 	font-family: Georgia, 'Times New Roman', serif;
-}
-
-.layout-bold-quote .card-dq svg {
-	transform: translate(1.95em, 1.025em) scale(6);
+	transform: translate(0.1em, 0.15em) scale(1);
 }
 
 .layout-bold-quote .card-header {
@@ -298,6 +298,11 @@ const CARD_STYLESHEET_RAW = `
 	user-select: none;
 	font-family: Georgia, 'Times New Roman', serif;
 }
+
+.layout-gradient .card-dq--gradient > svg {
+	transform: translate(1.95em, 1.025em) scale(6);
+}
+
 .layout-gradient .card-text {
 	position: relative;
 	z-index: 1;
@@ -335,7 +340,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .card-logo--right {
 	right: 2em;
-	transform: translateX(45%);
+	transform: translateX(35%);
 }
 
 .card-header {
@@ -436,187 +441,213 @@ const CARD_STYLESHEET_RAW = `
 	margin: 0.5em 0;
 	line-height: 1.3;
 }
-`
+`;
 
 function resolveFontFamily(fontFamily: string): string {
-	const primary = getPrimaryFontName(fontFamily)
-	const id = primary.toLowerCase().replace(/\s+/g, '-')
-	const fontOption = FONT_OPTIONS.find(f => f.id === id)
+	const primary = getPrimaryFontName(fontFamily);
+	const id = primary.toLowerCase().replace(/\s+/g, "-");
+	const fontOption = FONT_OPTIONS.find((f) => f.id === id);
 
-	if (fontOption?.source === 'google') {
-		return primary
+	if (fontOption?.source === "google") {
+		return primary;
 	}
 
-	if (fontOption?.source === 'system') {
-		return SYSTEM_FONT_MAP[primary] || primary
+	if (fontOption?.source === "system") {
+		return SYSTEM_FONT_MAP[primary] || primary;
 	}
 
-	return primary
+	return primary;
 }
 
 function buildFontFamilies(fontFamily: string) {
-	const primary = getPrimaryFontName(fontFamily)
-	const id = primary.toLowerCase().replace(/\s+/g, '-')
-	const fontOption = FONT_OPTIONS.find(f => f.id === id)
+	const primary = getPrimaryFontName(fontFamily);
+	const id = primary.toLowerCase().replace(/\s+/g, "-");
+	const fontOption = FONT_OPTIONS.find((f) => f.id === id);
 
-	if (fontOption?.source === 'google') {
-		return [{ name: primary, weight: [400, 700] }]
+	if (fontOption?.source === "google") {
+		return [{ name: primary, weight: [400, 700] }];
 	}
 
-	if (fontOption?.source === 'system') {
-		const alternative = SYSTEM_FONT_MAP[primary]
-		if (alternative) return [{ name: alternative, weight: [400, 700] }]
+	if (fontOption?.source === "system") {
+		const alternative = SYSTEM_FONT_MAP[primary];
+		if (alternative) return [{ name: alternative, weight: [400, 700] }];
 	}
 
-	return []
+	return [];
 }
 
 function decodeEntities(text: string): string {
 	return text
-		.replace(/&amp;/g, '&')
-		.replace(/&lt;/g, '<')
-		.replace(/&gt;/g, '>')
+		.replace(/&amp;/g, "&")
+		.replace(/&lt;/g, "<")
+		.replace(/&gt;/g, ">")
 		.replace(/&quot;/g, '"')
 		.replace(/&#39;/g, "'")
-		.replace(/&#x201C;/g, '\u201C')
-		.replace(/&#x201D;/g, '\u201D')
-		.replace(/&#x2014;/g, '\u2014')
-		.replace(/&#x2013;/g, '\u2013')
+		.replace(/&#x201C;/g, "\u201C")
+		.replace(/&#x201D;/g, "\u201D")
+		.replace(/&#x2014;/g, "\u2014")
+		.replace(/&#x2013;/g, "\u2013");
 }
 
 const SELF_CLOSING_TAGS = new Set([
-	'br', 'hr', 'img', 'input', 'col', 'area', 'base', 'link', 'meta', 'source',
-])
+	"br",
+	"hr",
+	"img",
+	"input",
+	"col",
+	"area",
+	"base",
+	"link",
+	"meta",
+	"source",
+	"svg",
+	"use"
+]);
 
 function parseAttributes(raw: string): Record<string, string> {
-	const props: Record<string, string> = {}
-	const re = /([\w][\w-]*)=(?:"([^"]*)"|'([^']*)')/g
-	let m: RegExpExecArray | null
+	const props: Record<string, string> = {};
+	const re = /([\w][\w-]*)=(?:"([^"]*)"|'([^']*)')/g;
+	let m: RegExpExecArray | null;
 	while ((m = re.exec(raw)) !== null) {
-		const name = m[1]
-		const value = m[2] ?? m[3] ?? ''
-		if (!name) continue
-		if (name === 'class') {
-			props.className = value
+		const name = m[1];
+		const value = m[2] ?? m[3] ?? "";
+		if (!name) continue;
+		if (name === "class") {
+			props.className = value;
 		} else {
-			props[name] = value
+			props[name] = value;
 		}
 	}
-	return props
+	return props;
 }
 
-let _key = 0
+let _key = 0;
 
-function findMatchingClose(html: string, startAfterOpen: number, tagName: string): number {
-	let depth = 1
-	let pos = startAfterOpen
-	const openRe = new RegExp(`<${tagName}[\\s>/]`)
-	const closeRe = new RegExp(`</${tagName}>`)
+function findMatchingClose(
+	html: string,
+	startAfterOpen: number,
+	tagName: string,
+): number {
+	let depth = 1;
+	let pos = startAfterOpen;
+	const openRe = new RegExp(`<${tagName}[\\s>/]`);
+	const closeRe = new RegExp(`</${tagName}>`);
 
 	while (depth > 0 && pos < html.length) {
-		const nextOpen = html.slice(pos).match(openRe)
-		const nextClose = html.slice(pos).match(closeRe)
-		const openIdx = nextOpen?.index ?? Infinity
-		const closeIdx = nextClose?.index ?? Infinity
+		const nextOpen = html.slice(pos).match(openRe);
+		const nextClose = html.slice(pos).match(closeRe);
+		const openIdx = nextOpen?.index ?? Infinity;
+		const closeIdx = nextClose?.index ?? Infinity;
 
-		if (!nextClose) return -1
+		if (!nextClose) return -1;
 
 		if (closeIdx <= openIdx) {
-			depth--
-			if (depth === 0) return pos + closeIdx
-			pos += closeIdx + nextClose[0].length
+			depth--;
+			if (depth === 0) return pos + closeIdx;
+			pos += closeIdx + nextClose[0].length;
 		} else if (nextOpen) {
-			const openTag = html.charAt(pos + openIdx + tagName.length + 1)
-			if (openTag === '/' || openTag === ' ') {
-				const tagText = html.slice(pos + openIdx, pos + openIdx + nextOpen[0].length)
-				if (tagText.trimEnd().endsWith('/')) {
-					pos += openIdx + nextOpen[0].length
+			const openTag = html.charAt(pos + openIdx + tagName.length + 1);
+			if (openTag === "/" || openTag === " ") {
+				const tagText = html.slice(
+					pos + openIdx,
+					pos + openIdx + nextOpen[0].length,
+				);
+				if (tagText.trimEnd().endsWith("/")) {
+					pos += openIdx + nextOpen[0].length;
 				} else {
-					depth++
-					pos += openIdx + nextOpen[0].length
+					depth++;
+					pos += openIdx + nextOpen[0].length;
 				}
 			} else {
-				pos += openIdx + nextOpen[0].length
+				pos += openIdx + nextOpen[0].length;
 			}
 		} else {
-			break
+			break;
 		}
 	}
-	return -1
+	return -1;
 }
 
 function parseChildren(html: string): React.ReactNode[] {
-	const nodes: React.ReactNode[] = []
-	let pos = 0
+	const nodes: React.ReactNode[] = [];
+	let pos = 0;
 
 	while (pos < html.length) {
-		const ch = html.charAt(pos)
-		if (ch !== '<') {
-			let end = html.indexOf('<', pos)
-			if (end === -1) end = html.length
-			const text = html.slice(pos, end)
-			if (text) nodes.push(decodeEntities(text))
-			pos = end
-			continue
+		const ch = html.charAt(pos);
+		if (ch !== "<") {
+			let end = html.indexOf("<", pos);
+			if (end === -1) end = html.length;
+			const text = html.slice(pos, end);
+			if (text) nodes.push(decodeEntities(text));
+			pos = end;
+			continue;
 		}
 
-		const closeMatch = html.slice(pos).match(/^<\/(\w+)>/)
-		if (closeMatch) break
+		const closeMatch = html.slice(pos).match(/^<\/(\w+)>/);
+		if (closeMatch) break;
 
-		const openMatch = html.slice(pos).match(/^<(\w+)((?:\s+[^>]*?)?)(\/?)>/)
+		const openMatch = html.slice(pos).match(/^<(\w+)((?:\s+[^>]*?)?)(\/?)>/);
 		if (!openMatch) {
-			nodes.push(decodeEntities(ch))
-			pos++
-			continue
+			nodes.push(decodeEntities(ch));
+			pos++;
+			continue;
 		}
 
-		const matchTag = openMatch[1] ?? ''
-		const matchAttrs = openMatch[2] ?? ''
-		const matchSlash = openMatch[3] ?? ''
-		const attrs = parseAttributes(matchAttrs)
-		const isSelfClose = matchSlash === '/' || SELF_CLOSING_TAGS.has(matchTag)
-		const Tag = matchTag as keyof React.JSX.IntrinsicElements
-		const afterOpen = pos + openMatch[0].length
+		const matchTag = openMatch[1] ?? "";
+		const matchAttrs = openMatch[2] ?? "";
+		const matchSlash = openMatch[3] ?? "";
+		const attrs = parseAttributes(matchAttrs);
+		const isSelfClose = matchSlash === "/" || SELF_CLOSING_TAGS.has(matchTag);
+		const Tag = matchTag as keyof React.JSX.IntrinsicElements;
+		const afterOpen = pos + openMatch[0].length;
 
 		if (isSelfClose) {
-			nodes.push(<Tag key={_key++} {...attrs} />)
-			pos = afterOpen
-			continue
+			nodes.push(<Tag key={_key++} {...attrs} />);
+			pos = afterOpen;
+			continue;
 		}
 
-		const closeIdx = findMatchingClose(html, afterOpen, matchTag)
+		const closeIdx = findMatchingClose(html, afterOpen, matchTag);
 		if (closeIdx === -1) {
-			nodes.push(<Tag key={_key++} {...attrs} />)
-			pos = afterOpen
-			continue
+			nodes.push(<Tag key={_key++} {...attrs} />);
+			pos = afterOpen;
+			continue;
 		}
 
-		const inner = html.slice(afterOpen, closeIdx)
-		const childNodes = inner ? parseChildren(inner) : []
-		const content = childNodes.length === 1 ? childNodes[0] : (childNodes.length > 0 ? childNodes : null)
+		const inner = html.slice(afterOpen, closeIdx);
+		const childNodes = inner ? parseChildren(inner) : [];
+		const content =
+			childNodes.length === 1
+				? childNodes[0]
+				: childNodes.length > 0
+					? childNodes
+					: null;
 		nodes.push(
 			<Tag key={_key++} {...attrs}>
 				{content}
 			</Tag>,
-		)
-		pos = closeIdx + matchTag.length + 3
+		);
+		pos = closeIdx + matchTag.length + 3;
 	}
 
-	return nodes
+	return nodes;
 }
 
 function parseHtmlToJsx(html: string): React.ReactNode {
-	_key = 0
-	const nodes = parseChildren(html)
-	return nodes.length === 1 ? nodes[0] : nodes
+	_key = 0;
+	const nodes = parseChildren(html);
+	return nodes.length === 1 ? nodes[0] : nodes;
 }
 
 function renderMarkdown(text: string): React.ReactNode {
-	const raw = marked.parse(text, { async: false }) as string
-	return parseHtmlToJsx(raw)
+	const raw = marked.parse(text, { async: false }) as string;
+	return parseHtmlToJsx(raw);
 }
 
-function buildCardNode(props: CardExportState, exportWidth: number): React.ReactNode {
+function buildCardNode(
+	props: CardExportState,
+	exportWidth: number,
+): React.ReactNode {
 	const {
 		text,
 		name,
@@ -624,36 +655,36 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 		photo,
 		logo,
 		logoOpacity = 0.5,
-		logoPosition = 'right',
+		logoPosition = "right",
 		cardBgColor,
 		cardTextColor,
 		fontFamily,
 		fontSize = 32,
-		textAlign = 'left',
-		layoutPreset = 'classic',
-		accentColor = '#6366f1',
-		bgType = 'solid',
-		bgGradient = '',
-		emptyText = 'Your quote will appear here',
-	} = props
+		textAlign = "left",
+		layoutPreset = "classic",
+		accentColor = "#6366f1",
+		bgType = "solid",
+		bgGradient = "",
+		emptyText = "Your quote will appear here",
+	} = props;
 
-	const scaleFactor = exportWidth / REFERENCE_WIDTH
-	const scaledFontSize = Math.round(fontSize * scaleFactor)
+	const scaleFactor = exportWidth / REFERENCE_WIDTH;
+	const scaledFontSize = Math.round(fontSize * scaleFactor);
 
-	const resolvedFont = resolveFontFamily(fontFamily)
+	const resolvedFont = resolveFontFamily(fontFamily);
 	const bgStyle: React.CSSProperties =
-		bgType === 'gradient' && bgGradient
+		bgType === "gradient" && bgGradient
 			? { backgroundImage: bgGradient }
-			: { backgroundColor: cardBgColor }
+			: { backgroundColor: cardBgColor };
 
-	const logoPosClass = LOGO_POS_CLASS[logoPosition]
+	const logoPosClass = LOGO_POS_CLASS[logoPosition];
 
 	const alignClass =
-		textAlign === 'center'
-			? 'card-text--center'
-			: textAlign === 'right'
-				? 'card-text--right'
-				: 'card-text--left'
+		textAlign === "center"
+			? "card-text--center"
+			: textAlign === "right"
+				? "card-text--right"
+				: "card-text--left";
 
 	const textContent = text ? (
 		<div
@@ -670,9 +701,9 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 		<div className={`card-text card-text--empty ${alignClass}`}>
 			{emptyText}
 		</div>
-	)
+	);
 
-	if (layoutPreset === 'modern') {
+	if (layoutPreset === "modern") {
 		return (
 			<div
 				className="card-content layout-modern"
@@ -701,10 +732,10 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 					/>
 				)}
 			</div>
-		)
+		);
 	}
 
-	if (layoutPreset === 'split') {
+	if (layoutPreset === "split") {
 		return (
 			<div
 				className="card-content layout-split"
@@ -716,15 +747,9 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 						style={{ backgroundColor: accentColor }}
 					>
 						{photo && (
-							<img
-								src={photo}
-								alt=""
-								className="card-photo card-photo--xl"
-							/>
+							<img src={photo} alt="" className="card-photo card-photo--xl" />
 						)}
-						{name && (
-							<h3 className="card-name card-split-name">{name}</h3>
-						)}
+						{name && <h3 className="card-name card-split-name">{name}</h3>}
 						{headline && (
 							<p className="card-headline card-split-headline">{headline}</p>
 						)}
@@ -742,11 +767,10 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 
-	const showDq =
-		layoutPreset === 'bold-quote' || layoutPreset === 'gradient'
+	const showDq = layoutPreset === "bold-quote" || layoutPreset === "gradient";
 
 	return (
 		<div
@@ -755,31 +779,30 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 		>
 			{showDq && (
 				<span
-					className={`card-dq${layoutPreset === 'gradient' ? ' card-dq--gradient' : ''}`}
+					className={`card-dq${layoutPreset === "gradient" ? " card-dq--gradient" : ""}`}
 				>
-					<svg style={{color: accentColor}}>
-						<use href="images/quotes.svg#quotes" />
+					<svg viewBox="2.679 4.675 18.528 14.508" style={{ color: accentColor }}>
+						<path
+							fill="currentColor"
+							d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"
+						/>
 					</svg>
 				</span>
 			)}
 
-			{layoutPreset === 'centered' && (
+			{layoutPreset === "centered" && (
 				<div className="card-centered-header">
 					{photo && (
-						<img
-							src={photo}
-							alt=""
-							className="card-photo card-photo--xl"
-						/>
+						<img src={photo} alt="" className="card-photo card-photo--xl" />
 					)}
 					{name && <h2 className="card-name">{name}</h2>}
 					{headline && <p className="card-headline">{headline}</p>}
 				</div>
 			)}
 
-			{layoutPreset !== 'minimal' &&
-				layoutPreset !== 'centered' &&
-				layoutPreset !== 'gradient' && (
+			{layoutPreset !== "minimal" &&
+				layoutPreset !== "centered" &&
+				layoutPreset !== "gradient" && (
 					<header className="card-header">
 						{photo && <img src={photo} alt="" className="card-photo" />}
 						<div className="card-identity">
@@ -791,13 +814,13 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 
 			{textContent}
 
-			{layoutPreset === 'minimal' && name && (
+			{layoutPreset === "minimal" && name && (
 				<p className="card-minimal-att" style={{ color: accentColor }}>
-					{'\u2014'} {name}
+					{"\u2014"} {name}
 				</p>
 			)}
 
-			{layoutPreset === 'gradient' && (name || headline) && (
+			{layoutPreset === "gradient" && (name || headline) && (
 				<div className="card-gradient-bar">
 					{name && <span className="card-gradient-name">{name}</span>}
 					{headline && (
@@ -806,33 +829,29 @@ function buildCardNode(props: CardExportState, exportWidth: number): React.React
 				</div>
 			)}
 
-			{layoutPreset !== 'minimal' &&
-				layoutPreset !== 'gradient' &&
-				logo && (
-					<img
-						src={logo}
-						alt=""
-						className={`card-logo ${logoPosClass}`}
-						style={{ opacity: logoOpacity }}
-					/>
-				)}
+			{layoutPreset !== "minimal" && layoutPreset !== "gradient" && logo && (
+				<img
+					src={logo}
+					alt=""
+					className={`card-logo ${logoPosClass}`}
+					style={{ opacity: logoOpacity }}
+				/>
+			)}
 		</div>
-	)
+	);
 }
 
 export async function buildQuoteCard(props: CardExportState) {
 	const dims = ASPECT_DIMENSIONS[props.aspectRatio] ?? {
 		width: 1200,
 		height: 630,
-	}
+	};
 
-	const families = buildFontFamilies(props.fontFamily)
+	const families = buildFontFamilies(props.fontFamily);
 	const loadedFonts =
-		families.length > 0
-			? await googleFonts({ families })
-			: []
+		families.length > 0 ? await googleFonts({ families }) : [];
 
-	const node = buildCardNode(props, dims.width)
+	const node = buildCardNode(props, dims.width);
 
 	return {
 		node,
@@ -842,5 +861,5 @@ export async function buildQuoteCard(props: CardExportState) {
 			fonts: loadedFonts,
 			stylesheets: [getCardStylesheet(dims.width)],
 		},
-	}
+	};
 }
