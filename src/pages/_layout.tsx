@@ -18,6 +18,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 				<link rel="icon" type="image/ico" href="/images/favicon.ico" />
 				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content="#6f66ff" />
+				<link rel="preload" href="/fonts/Nunito-VF.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 			</head>
 			<ThemeInitializer />
 			<Header />

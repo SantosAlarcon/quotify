@@ -17,6 +17,9 @@ export const useThemeStore = create<ThemeState & ThemeActions>()(
 			mode: "system",
 			setMode: (mode) => set({ mode }),
 		}),
-		{ name: "quotify-theme" },
+		{
+			name: "quotify-theme",
+			partialize: (state) => ({ mode: state.mode }),
+		},
 	),
 );

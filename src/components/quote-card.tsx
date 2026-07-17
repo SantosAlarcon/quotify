@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useMemo } from "react";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 import { useTranslations } from "../i18n/use-translations";
@@ -51,7 +52,7 @@ function renderMarkdown(text: string): string {
 	return DOMPurify.sanitize(raw);
 }
 
-export function QuoteCardContent({
+export const QuoteCardContent = React.memo(function QuoteCardContent({
 	text,
 	name,
 	headline,
@@ -77,6 +78,11 @@ export function QuoteCardContent({
 		bgType === "gradient" && bgGradient
 			? { backgroundImage: bgGradient }
 			: { backgroundColor: cardBgColor };
+
+	const sanitizedHtml = useMemo(() => {
+		if (!text) return '';
+		return renderMarkdown(text);
+	}, [text]);
 
 	return (
 		<div
@@ -105,7 +111,7 @@ export function QuoteCardContent({
 			{layoutPreset === "centered" && (
 				<div className="card-centered-header">
 					{photo && (
-						<img src={photo} alt="" className="card-photo card-photo--xl" />
+						<img src={photo} alt="" className="card-photo card-photo--xl" width="80" height="80" decoding="async" />
 					)}
 					{name && <h2 className="card-name">{name}</h2>}
 					{headline && <p className="card-headline">{headline}</p>}
@@ -119,7 +125,7 @@ export function QuoteCardContent({
 				layoutPreset !== "split" &&
 				layoutPreset !== "gradient" && (
 					<header className="card-header">
-						{photo && <img src={photo} alt="" className="card-photo" />}
+						{photo && <img src={photo} alt="" className="card-photo" width="64" height="64" decoding="async" />}
 						<div className="card-identity">
 							{name && <h2 className="card-name">{name}</h2>}
 							{headline && <p className="card-headline">{headline}</p>}
@@ -146,17 +152,17 @@ export function QuoteCardContent({
 								fontFamily,
 								fontSize: `${fontSize}px`,
 							}}
-							dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
-						/>
-					) : (
-						<div className={`card-text card-text--empty ${alignClass}`}>
-							<p>{t("quoteCard.empty")}</p>
-						</div>
-					)}
-				</div>
-			)}
+						dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+					/>
+				) : (
+					<div className={`card-text card-text--empty ${alignClass}`}>
+						<p>{t("quoteCard.empty")}</p>
+					</div>
+				)}
+			</div>
+		)}
 
-			{/* ── Split layout: left panel ── */}
+		{/* ── Split layout: left panel ── */}
 			{layoutPreset === "split" && (
 				<div className="card-split-inner">
 					<div
@@ -164,7 +170,7 @@ export function QuoteCardContent({
 						style={{ backgroundColor: accentColor }}
 					>
 						{photo && (
-							<img src={photo} alt="" className="card-photo card-photo--xl" />
+							<img src={photo} alt="" className="card-photo card-photo--xl" width="88" height="88" decoding="async" />
 						)}
 						{name && <h3 className="card-name card-split-name">{name}</h3>}
 						{headline && (
@@ -180,19 +186,20 @@ export function QuoteCardContent({
 									fontFamily,
 									fontSize: `${fontSize}px`,
 								}}
-								dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
-							/>
-						) : (
-							<div className={`card-text card-text--empty ${alignClass}`}>
-								<p>{t("quoteCard.empty")}</p>
-							</div>
-						)}
-						{logo && (
+						dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+					/>
+				) : (
+					<div className={`card-text card-text--empty ${alignClass}`}>
+						<p>{t("quoteCard.empty")}</p>
+					</div>
+				)}
+				{logo && (
 							<img
 								src={logo}
 								alt=""
 								className={`card-logo card-logo--split ${logoPosClass}`}
 								style={{ opacity: logoOpacity }}
+								decoding="async"
 							/>
 						)}
 					</div>
@@ -210,19 +217,19 @@ export function QuoteCardContent({
 							fontFamily,
 							fontSize: `${fontSize}px`,
 						}}
-						dangerouslySetInnerHTML={{ __html: renderMarkdown(text) }}
-					/>
-				) : (
-					<div className={`card-text card-text--empty ${alignClass}`}>
-						<p>{t("quoteCard.empty")}</p>
-					</div>
-				))}
+					dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+				/>
+			) : (
+				<div className={`card-text card-text--empty ${alignClass}`}>
+					<p>{t("quoteCard.empty")}</p>
+				</div>
+			))}
 
-			{/* ── Modern footer ── */}
+		{/* ── Modern footer ── */}
 			{layoutPreset === "modern" && (
 				<footer className="card-footer">
 					{photo && (
-						<img src={photo} alt="" className="card-photo card-photo--sm" />
+						<img src={photo} alt="" className="card-photo card-photo--sm" width="40" height="40" decoding="async" />
 					)}
 					<div>
 						{name && <h2 className="card-name">{name}</h2>}
@@ -258,8 +265,9 @@ export function QuoteCardContent({
 						alt=""
 						className={`card-logo ${logoPosClass}`}
 						style={{ opacity: logoOpacity }}
+						decoding="async"
 					/>
 				)}
 		</div>
 	);
-}
+});

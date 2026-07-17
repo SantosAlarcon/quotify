@@ -111,10 +111,26 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
 		}),
 		{
 			name: "quotify-store",
-			partialize: (state) => {
-				const { isFontReady, ...rest } = state;
-				return rest;
-			},
+			partialize: (state) => ({
+				name: state.name,
+				headline: state.headline,
+				photo: state.photo,
+				logo: state.logo,
+				logoOpacity: state.logoOpacity,
+				logoPosition: state.logoPosition,
+				cardBgColor: state.cardBgColor,
+				cardTextColor: state.cardTextColor,
+				fontFamily: state.fontFamily,
+				fontSize: state.fontSize,
+				textAlign: state.textAlign,
+				text: state.text,
+				layoutPreset: state.layoutPreset,
+				aspectRatio: state.aspectRatio,
+				accentColor: state.accentColor,
+				bgType: state.bgType,
+				bgGradient: state.bgGradient,
+				customFont: state.customFont,
+			}),
 		},
 	),
 );

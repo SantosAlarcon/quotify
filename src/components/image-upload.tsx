@@ -1,10 +1,55 @@
 'use client'
 
-import { useState, type DragEvent, useRef, useId, type ChangeEvent } from 'react'
+import { useState, type DragEvent, useRef, useId, type ChangeEvent, useCallback } from 'react'
 import { useTranslations } from '../i18n/use-translations'
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024
+const MAX_DIMENSION = 512
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/svg']
+
+function resizeImage(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (file.type === 'image/svg') {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = reject
+      reader.readAsDataURL(file)
+      return
+    }
+
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      let { width, height } = img
+
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        if (width > height) {
+          height = Math.round((height / width) * MAX_DIMENSION)
+          width = MAX_DIMENSION
+        } else {
+          width = Math.round((width / height) * MAX_DIMENSION)
+          height = MAX_DIMENSION
+        }
+      }
+
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(img, 0, 0, width, height)
+      resolve(canvas.toDataURL(file.type === 'image/png' ? 'image/png' : 'image/webp', 0.85))
+    }
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url)
+      reject(new Error('Failed to load image'))
+    }
+
+    img.src = url
+  })
+}
 
 type Props = {
   label: string
@@ -35,7 +80,7 @@ export function ImageUpload({ label, currentImage, onImageChange }: Props) {
   const { t } = useTranslations()
   const validateFile = useValidateFile()
 
-  const handleFile = (file: File) => {
+  const handleFile = useCallback(async (file: File) => {
     setError(null)
     const validationError = validateFile(file)
     if (validationError) {
@@ -43,12 +88,13 @@ export function ImageUpload({ label, currentImage, onImageChange }: Props) {
       return
     }
 
-    const reader = new FileReader()
-    reader.onload = () => {
-      onImageChange(reader.result as string)
+    try {
+      const dataUrl = await resizeImage(file)
+      onImageChange(dataUrl)
+    } catch {
+      setError(t('imageUpload.errorSize'))
     }
-    reader.readAsDataURL(file)
-  }
+  }, [validateFile, onImageChange, t])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

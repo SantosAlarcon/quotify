@@ -89,7 +89,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-classic .card-logo {
 	position: absolute;
-	bottom: 38px;
+	bottom: 40px;
 	max-height: 72px;
 	object-fit: contain;
 }
@@ -124,7 +124,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-modern .card-logo {
 	position: absolute;
-	bottom: 38px;
+	bottom: 40px;
 	max-height: 48px;
 	object-fit: contain;
 }
@@ -169,9 +169,10 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-bold-quote .card-logo {
 	position: absolute;
-	bottom: 38px;
+	bottom: 40px;
 	max-height: 72px;
 	object-fit: contain;
+	display: flex;
 }
 
 .layout-minimal {
@@ -218,7 +219,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-centered .card-logo {
 	position: absolute;
-	bottom: 38px;
+	bottom: 40px;
 	max-height: 64px;
 	object-fit: contain;
 }
@@ -268,7 +269,7 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-split .card-logo--split {
 	position: absolute;
-	bottom: 38px;
+	bottom: 40px;
 	right: 20px;
 	max-height: 48px;
 	object-fit: contain;
@@ -329,15 +330,16 @@ const CARD_STYLESHEET_RAW = `
 }
 
 .card-logo--left {
-	left: 4.5em;
+	left: 12%;
+	transform: translateX(-50%);
 }
 .card-logo--center {
 	left: 50%;
-	right: auto;
 	transform: translateX(-50%);
 }
 .card-logo--right {
-	right: 6em;
+	left: 88%;
+	transform: translateX(-50%);
 }
 
 .card-header {

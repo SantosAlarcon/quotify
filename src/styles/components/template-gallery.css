@@ -14,6 +14,7 @@
 	background: var(--app-surface);
 	cursor: pointer;
 	transition: border-color 0.15s, transform 0.15s;
+	will-change: transform;
 
 	&:hover {
 		border-color: var(--app-accent);

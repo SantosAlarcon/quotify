@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent, useId, useRef, useState } from "react";
+import { type ChangeEvent, useCallback, useEffect, useId, useRef, useState } from "react";
 import { useTranslations } from "../i18n/use-translations";
 import { FONT_OPTIONS } from "../lib/fonts";
 import type {
@@ -128,45 +128,43 @@ const CATEGORY_KEYS: Record<string, string> = {
 const CATEGORY_ORDER: string[] = ["serif", "sans-serif", "monospace"];
 
 export function Editor() {
-	const {
-		text,
-		setName,
-		setHeadline,
-		setPhoto,
-		setLogo,
-		setLogoOpacity,
-		setLogoPosition,
-		setCardBgColor,
-		setCardTextColor,
-		setFontFamily,
-		setText,
-		setLayoutPreset,
-		setAspectRatio,
-		setAccentColor,
-		setFontSize,
-		setTextAlign,
-		setBgType,
-		setBgGradient,
-		name,
-		headline,
-		photo,
-		logo,
-		logoOpacity,
-		logoPosition,
-		cardBgColor,
-		cardTextColor,
-		fontFamily,
-		fontSize,
-		textAlign,
-		layoutPreset,
-		aspectRatio,
-		accentColor,
-		customFont,
-		setCustomFont,
-		bgType,
-		bgGradient,
-		reset,
-	} = useQuoteStore();
+	const text = useQuoteStore((s) => s.text);
+	const setText = useQuoteStore((s) => s.setText);
+	const name = useQuoteStore((s) => s.name);
+	const setName = useQuoteStore((s) => s.setName);
+	const headline = useQuoteStore((s) => s.headline);
+	const setHeadline = useQuoteStore((s) => s.setHeadline);
+	const photo = useQuoteStore((s) => s.photo);
+	const setPhoto = useQuoteStore((s) => s.setPhoto);
+	const logo = useQuoteStore((s) => s.logo);
+	const setLogo = useQuoteStore((s) => s.setLogo);
+	const logoOpacity = useQuoteStore((s) => s.logoOpacity);
+	const setLogoOpacity = useQuoteStore((s) => s.setLogoOpacity);
+	const logoPosition = useQuoteStore((s) => s.logoPosition);
+	const setLogoPosition = useQuoteStore((s) => s.setLogoPosition);
+	const cardBgColor = useQuoteStore((s) => s.cardBgColor);
+	const setCardBgColor = useQuoteStore((s) => s.setCardBgColor);
+	const cardTextColor = useQuoteStore((s) => s.cardTextColor);
+	const setCardTextColor = useQuoteStore((s) => s.setCardTextColor);
+	const fontFamily = useQuoteStore((s) => s.fontFamily);
+	const setFontFamily = useQuoteStore((s) => s.setFontFamily);
+	const fontSize = useQuoteStore((s) => s.fontSize);
+	const setFontSize = useQuoteStore((s) => s.setFontSize);
+	const textAlign = useQuoteStore((s) => s.textAlign);
+	const setTextAlign = useQuoteStore((s) => s.setTextAlign);
+	const layoutPreset = useQuoteStore((s) => s.layoutPreset);
+	const setLayoutPreset = useQuoteStore((s) => s.setLayoutPreset);
+	const aspectRatio = useQuoteStore((s) => s.aspectRatio);
+	const setAspectRatio = useQuoteStore((s) => s.setAspectRatio);
+	const accentColor = useQuoteStore((s) => s.accentColor);
+	const setAccentColor = useQuoteStore((s) => s.setAccentColor);
+	const bgType = useQuoteStore((s) => s.bgType);
+	const setBgType = useQuoteStore((s) => s.setBgType);
+	const bgGradient = useQuoteStore((s) => s.bgGradient);
+	const setBgGradient = useQuoteStore((s) => s.setBgGradient);
+	const customFont = useQuoteStore((s) => s.customFont);
+	const setCustomFont = useQuoteStore((s) => s.setCustomFont);
+	const reset = useQuoteStore((s) => s.reset);
 	const { t } = useTranslations();
 
 	const uploadRef = useRef<HTMLInputElement>(null);
@@ -174,11 +172,19 @@ export function Editor() {
 	const uploadId = useId();
 
 	const [toast, setToast] = useState<string | null>(null);
+	const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const showToast = (msg: string) => {
+	useEffect(() => {
+		return () => {
+			if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+		};
+	}, []);
+
+	const showToast = useCallback((msg: string) => {
+		if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
 		setToast(msg);
-		setTimeout(() => setToast(null), 2500);
-	};
+		toastTimerRef.current = setTimeout(() => setToast(null), 2500);
+	}, []);
 
 	const handleFontUpload = (e: ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];

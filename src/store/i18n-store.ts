@@ -16,6 +16,7 @@ export const useI18nStore = create<I18nState>()(
     }),
     {
       name: 'quotify-locale',
+      partialize: (state) => ({ locale: state.locale }),
     },
   ),
 )

@@ -112,7 +112,7 @@
 	color: var(--app-danger);
 	padding: var(--space-xs) var(--space-sm);
 	border-radius: var(--radius-sm);
-	transition: all ease-in-out 0.15s;
+	transition: background-color 0.15s, color 0.15s;
 }
 
 .image-upload__remove:hover {
@@ -587,6 +587,7 @@
 	pointer-events: none;
 	animation: toast-in 0.2s ease-out;
 	box-shadow: var(--shadow-md);
+	will-change: opacity, transform;
 
 	@media (prefers-reduced-motion: reduce) {
 		animation: none;

@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import { useI18nStore } from "../store/i18n-store";
 import ca from "./locales/ca.json";
 import de from "./locales/de.json";
@@ -52,7 +53,7 @@ function interpolate(
 export function useTranslations() {
 	const locale = useI18nStore((s) => s.locale);
 
-	const t = (key: string, params?: Record<string, string | number>): string => {
+	const t = useCallback((key: string, params?: Record<string, string | number>): string => {
 		const localeData: TranslationMap =
 			translations[locale] ?? translations["en"]!;
 		const enData: TranslationMap = translations["en"]!;
@@ -64,7 +65,7 @@ export function useTranslations() {
 		if (value === undefined) return key;
 
 		return interpolate(value, params);
-	};
+	}, [locale]);
 
 	return { t, locale };
 }
