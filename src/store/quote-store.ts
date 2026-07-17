@@ -112,7 +112,7 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
 		{
 			name: "quotify-store",
 			partialize: (state) => {
-				const { isFontReady, photo, logo, ...rest } = state;
+				const { isFontReady, ...rest } = state;
 				return rest;
 			},
 		},
