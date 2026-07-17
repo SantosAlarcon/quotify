@@ -156,7 +156,7 @@ const CARD_STYLESHEET_RAW = `
 
 .layout-bold-quote .card-header {
 	position: absolute;
-	top: 50px;
+	top: 55px;
 	left: 40px;
 	display: flex;
 	align-items: center;

@@ -19,7 +19,7 @@
 
 	.card-header {
 		position: absolute;
-		top: 2.5rem;
+		top: 2.75rem;
 		left: 2.5rem;
 		display: flex;
 		align-items: center;
@@ -45,7 +45,7 @@
 	.card-accent-bar {
 		position: absolute;
 		left: 1.5rem;
-		top: 2.5rem;
+		top: 2.75rem;
 		bottom: 2.5rem;
 		width: 4px;
 		border-radius: 2px;
@@ -108,7 +108,7 @@
 
 	.card-header {
 		position: absolute;
-		top: 2.5rem;
+		top: 2.75rem;
 		left: 2.5rem;
 		display: flex;
 		align-items: center;
@@ -308,11 +308,13 @@
 	left: 1.5em;
 	right: auto;
 }
+
 .card-logo--center {
 	left: 50%;
 	right: auto;
 	transform: translateX(-50%);
 }
+
 .card-logo--right {
 	right: 1.55em;
 }
