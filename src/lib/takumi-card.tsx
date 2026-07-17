@@ -330,16 +330,16 @@ const CARD_STYLESHEET_RAW = `
 }
 
 .card-logo--left {
-	left: 12%;
-	transform: translateX(-50%);
+	left: 24px;
+	right: auto;
 }
 .card-logo--center {
 	left: 50%;
 	transform: translateX(-50%);
 }
 .card-logo--right {
-	left: 88%;
-	transform: translateX(-50%);
+	right: 24px;
+	left: auto;
 }
 
 .card-header {
