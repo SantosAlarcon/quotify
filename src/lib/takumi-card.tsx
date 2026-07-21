@@ -1,6 +1,6 @@
 import { marked } from "marked";
 import { googleFonts } from "takumi-js/helpers";
-import type { LogoPosition, QuoteState } from "../store/quote-store";
+import type { QuoteState } from "../store/quote-store";
 import { FONT_OPTIONS, getPrimaryFontName } from "./fonts";
 
 export type CardExportState = Pick<
@@ -42,12 +42,6 @@ const SYSTEM_FONT_MAP: Record<string, string> = {
 };
 
 const REFERENCE_WIDTH = 644;
-
-const LOGO_POS_CLASS: Record<LogoPosition, string> = {
-	left: "card-logo--left",
-	center: "card-logo--center",
-	right: "card-logo--right",
-};
 
 function scalePx(css: string, factor: number): string {
 	return css.replace(
@@ -327,19 +321,6 @@ const CARD_STYLESHEET_RAW = `
 }
 .layout-gradient .card-gradient-headline {
 	opacity: 0.75;
-}
-
-.card-logo--left {
-	left: 24px;
-	right: auto;
-}
-.card-logo--center {
-	left: 50%;
-	transform: translateX(-50%);
-}
-.card-logo--right {
-	right: 24px;
-	left: auto;
 }
 
 .card-header {
@@ -676,7 +657,12 @@ function buildCardNode(
 			? { backgroundImage: bgGradient }
 			: { backgroundColor: cardBgColor };
 
-	const logoPosClass = LOGO_POS_CLASS[logoPosition];
+	const logoPositionStyle: React.CSSProperties =
+		logoPosition === "left"
+			? { left: 24, right: "auto" }
+			: logoPosition === "right"
+				? { right: 72, left: "auto" }
+				: { left: "50%", transform: "translateX(-50%)" };
 
 	const alignClass =
 		textAlign === "center"
@@ -726,8 +712,8 @@ function buildCardNode(
 					<img
 						src={logo}
 						alt=""
-						className={`card-logo ${logoPosClass}`}
-						style={{ opacity: logoOpacity }}
+						className="card-logo"
+						style={{ opacity: logoOpacity, ...logoPositionStyle }}
 					/>
 				)}
 			</div>
@@ -759,7 +745,7 @@ function buildCardNode(
 							<img
 								src={logo}
 								alt=""
-								className={`card-logo card-logo--split ${logoPosClass}`}
+								className="card-logo card-logo--split"
 								style={{ opacity: logoOpacity }}
 							/>
 						)}
@@ -835,8 +821,8 @@ function buildCardNode(
 				<img
 					src={logo}
 					alt=""
-					className={`card-logo ${logoPosClass}`}
-					style={{ opacity: logoOpacity }}
+					className="card-logo"
+					style={{ opacity: logoOpacity, ...logoPositionStyle }}
 				/>
 			)}
 		</div>

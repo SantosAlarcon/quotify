@@ -11,6 +11,16 @@
 	border-radius: var(--radius-md);
 	transition: background-color 0.15s, opacity 0.15s;
 
+	&::before {
+		content: url("/images/export.svg");
+		stroke: white;
+		color: white;
+		fill: white;
+		display: flex;
+		height: 24px;
+		filter: invert();
+	}
+
 	&:hover:not(:disabled) {
 		background-color: var(--app-accent-hover);
 	}
